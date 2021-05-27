@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/js/animation.min.js",
+    "inputFiles": [
+      "JSInterop/Modules/animation.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/file.min.js",
+    "inputFiles": [
+      "JSInterop/Modules/file.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/navigation.min.js",
+    "inputFiles": [
+      "JSInterop/Modules/navigation.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/utils.min.js",
+    "inputFiles": [
+      "JSInterop/Modules/utils.js"
+    ]
+  }
+]

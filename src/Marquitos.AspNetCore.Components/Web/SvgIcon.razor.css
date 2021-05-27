@@ -1,0 +1,13 @@
+﻿.mq-icon {
+    height: 1.5em;
+    margin: 0 0.25em;
+    vertical-align: bottom;
+}
+
+.breadcrumb-item .mq-icon {
+    margin-left: 0;
+}
+
+.card-header .mq-icon {
+    margin-left: 0;
+}

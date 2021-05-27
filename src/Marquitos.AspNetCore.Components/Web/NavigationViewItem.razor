@@ -1,0 +1,23 @@
+﻿@{ 
+    var disabled = !Enabled;
+    var cssClass = Selected ? "mq-btn selected" : "mq-btn";
+}
+
+<button class="@cssClass" title="@Tooltip" @onclick="HandleOnClick" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" disabled="@disabled">
+    @if (Icon != null)
+    {
+        <div class="mq-btn-icon">@Icon</div>
+    }
+    else
+    {
+        <div class="mq-btn-icon">@IconContent</div>
+    }
+    @if (Content != null)
+    {
+        <div class="mq-btn-content">@Content</div>
+    }
+    else if (ChildContent != null)
+    {
+        <div class="mq-btn-content">@ChildContent</div>
+    }
+</button>

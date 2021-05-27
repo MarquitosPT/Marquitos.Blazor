@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4FB2811E-68E1-497F-A36F-493A2321963B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{03B5F934-AD1E-486E-8CC2-2981A4D7C75B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.AspNetCore.Components", "src\Marquitos.AspNetCore.Components\Marquitos.AspNetCore.Components.csproj", "{2B899577-7210-49C3-BEF0-60422C5FF1B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{9107A75A-AD1B-437A-9F76-3C389C88BA8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.Blazor.Server", "src\Marquitos.Blazor\Server\Marquitos.Blazor.Server.csproj", "{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.Blazor.Client", "src\Marquitos.Blazor\Client\Marquitos.Blazor.Client.csproj", "{452F5224-C7F2-46EA-B552-554A4E32B0D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.Blazor.Shared", "src\Marquitos.Blazor\Shared\Marquitos.Blazor.Shared.csproj", "{0AF5FF04-784A-4455-BF51-9A097FF54E88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B899577-7210-49C3-BEF0-60422C5FF1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B899577-7210-49C3-BEF0-60422C5FF1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B899577-7210-49C3-BEF0-60422C5FF1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B899577-7210-49C3-BEF0-60422C5FF1B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452F5224-C7F2-46EA-B552-554A4E32B0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452F5224-C7F2-46EA-B552-554A4E32B0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452F5224-C7F2-46EA-B552-554A4E32B0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452F5224-C7F2-46EA-B552-554A4E32B0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03B5F934-AD1E-486E-8CC2-2981A4D7C75B} = {4FB2811E-68E1-497F-A36F-493A2321963B}
+		{2B899577-7210-49C3-BEF0-60422C5FF1B0} = {03B5F934-AD1E-486E-8CC2-2981A4D7C75B}
+		{9107A75A-AD1B-437A-9F76-3C389C88BA8D} = {4FB2811E-68E1-497F-A36F-493A2321963B}
+		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
+		{452F5224-C7F2-46EA-B552-554A4E32B0D9} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
+		{0AF5FF04-784A-4455-BF51-9A097FF54E88} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B8E4BDD-6C98-4617-B356-3D937E14AAB4}
+	EndGlobalSection
+EndGlobal

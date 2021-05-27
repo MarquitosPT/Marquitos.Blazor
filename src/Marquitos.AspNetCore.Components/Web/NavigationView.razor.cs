@@ -1,0 +1,206 @@
+﻿using Marquitos.AspNetCore.Components.Enums;
+using Marquitos.AspNetCore.Components.JSInterop;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Marquitos.AspNetCore.Components.Web
+{
+    public sealed partial class NavigationView : ComponentBase, INavigationView, INavigationViewFrame, IDisposable
+    {
+        private NavigationViewState _state = NavigationViewState.Closed;
+        private bool _isOpen = false;
+        private bool _playNavigationAnimation = false;
+        private ElementReference _panelElement;
+        private ElementReference _frameElement;
+        private List<INavigationViewItem> _list = new List<INavigationViewItem>();
+        private INavigationViewItem _backButton;
+        private INavigationViewHeader headerFrame;
+
+        [Inject]
+        private IJSAnimation JSAnimation { get; set; }
+
+        [Inject]
+        private IJSNavigation JSNavigation { get; set; }
+
+        [Inject]
+        private NavigationManager NavigationManager { get; set; }
+
+        [Parameter]
+        public RenderFragment MenuItems { get; set; }
+
+        [Parameter]
+        public RenderFragment FooterItems { get; set; }
+
+        [Parameter]
+        public RenderFragment Frame { get; set; }
+
+        [Parameter]
+        public RenderFragment Header { get; set; }
+
+        [Parameter]
+        public bool IsOpened
+        {
+            get
+            {
+                return _isOpen;
+            }
+
+            set
+            {
+                if (_isOpen != value)
+                {
+                    _isOpen = value;
+
+                    if (_isOpen)
+                    {
+                        _state = NavigationViewState.Open;
+                    }
+                    else
+                    {
+                        _state = NavigationViewState.Closed;
+                    }
+                }
+            }
+        }
+
+        [Parameter]
+        public bool IsBackButtonVisible { get; set; }
+
+        [Parameter]
+        public string BackButtonTitle { get; set; } = "Go back";
+
+        public INavigationViewHeader HeaderFrame 
+        { 
+            get => headerFrame; 
+            set 
+            { 
+                headerFrame = value; 
+                StateHasChanged(); 
+            }  
+        }
+
+        public INavigationViewItem ActiveMenu { get; private set; }
+
+        public void Add(INavigationViewItem item)
+        {
+            _list.Add(item);
+        }
+
+        public void Remove(INavigationViewItem item)
+        {
+            if (ActiveMenu == item)
+            {
+                ActiveMenu = null;
+            }
+
+            _list.Remove(item);
+        }
+
+        public void Activate(INavigationViewItem item)
+        {
+            if (ActiveMenu != item)
+            {
+                ActiveMenu = item;
+            }
+        }
+
+        public void NavigateTo(string uri, bool forceLoad = false)
+        {
+            NavigationManager.NavigateTo(uri, forceLoad);
+        }
+
+        protected override void OnInitialized()
+        {
+            NavigationManager.LocationChanged += HandleLocationChanged;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSAnimation.InitializeAsync();
+                await JSNavigation.InitializeAsync();
+            }
+
+            if (!firstRender)
+            {
+                if (_state == NavigationViewState.Openning)
+                {
+                    IsOpened = true;
+
+                    await JSAnimation.GrowAsync(_panelElement, 48);
+                }
+                else if (_state == NavigationViewState.Closing)
+                {
+                    await JSAnimation.CompactAsync(_panelElement, 48, async () =>
+                    {
+                        IsOpened = false;
+                        StateHasChanged();
+
+                        await Task.CompletedTask;
+                    });
+                }
+
+                if (_playNavigationAnimation)
+                {
+                    _playNavigationAnimation = false;
+                    await JSAnimation.PlayAsync(AnimationType.SlideInFromBottom, _frameElement);
+                }
+
+                if (IsBackButtonVisible)
+                {
+                    _backButton.Enabled = await JSNavigation.CanGoBackAsync();
+                }
+            }
+        }
+
+        private async Task BackAsync()
+        {
+            if (await JSNavigation.CanGoBackAsync())
+            {
+                await JSNavigation.BackAsync();
+            }
+        }
+
+        private void Toggle()
+        {
+            if (_isOpen)
+            {
+                _state = NavigationViewState.Closing;
+                StateHasChanged();
+            }
+            else
+            {
+                _state = NavigationViewState.Openning;
+                StateHasChanged();
+            }
+        }
+
+        private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+        {
+            _playNavigationAnimation = true;
+
+            var relativeUrl = NavigationManager.ToBaseRelativePath(e.Location);
+            var item = _list.FirstOrDefault(e => e.Uri == relativeUrl || (e.Uri != "" && relativeUrl.StartsWith(e.Uri)));
+
+            if (ActiveMenu != item)
+            {
+                ActiveMenu = item;
+                StateHasChanged();
+            }
+        }
+
+        public void Dispose()
+        {
+            NavigationManager.LocationChanged -= HandleLocationChanged;
+
+            HeaderFrame = null;
+            ActiveMenu = null;
+            _list.Clear();
+        }
+    }
+}

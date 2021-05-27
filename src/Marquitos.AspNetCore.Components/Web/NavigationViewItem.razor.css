@@ -1,0 +1,78 @@
+﻿.mq-btn {
+    background: none;
+    cursor: pointer;
+    border: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 4px;
+    outline: none;
+    color: inherit;
+    display: flex;
+    flex-shrink: 0;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    overflow: hidden;
+    text-transform: none;
+}
+
+    .mq-btn:not(:enabled) {
+        color: #404040;
+        cursor: default;
+    }
+
+    .mq-btn:hover:enabled {
+        background-color: #1e88e5;
+    }
+
+    .mq-btn:active:enabled, .mq-btn.selected:enabled {
+        background-color: #1976d2;
+    }
+
+    .mq-btn:focus {
+        outline: 1px dashed white;
+        outline-offset: -1px;
+    }
+
+    .mq-btn > .mq-btn-icon {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        margin: 8px;
+        display: flex;
+        -ms-align-content: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+        .mq-btn > .mq-btn-icon svg {
+            -ms-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+    .mq-btn > .mq-btn-content {
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 4px;
+    }
+
+.mq-menu:not(.open) .mq-btn-content {
+    display: none;
+}
+
+.mq-menu-header .mq-btn {
+    width: 48px;
+}

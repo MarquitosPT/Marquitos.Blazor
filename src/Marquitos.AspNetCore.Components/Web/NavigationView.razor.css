@@ -1,0 +1,81 @@
+﻿.mq-nav {
+    position: relative;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mq-menu {
+    --mq-menu-width: 48px;
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: var(--mq-menu-width);
+    overflow: hidden;
+    opacity: 0.8;
+}
+    .mq-menu.open {
+        width: 200px;
+    }
+
+.mq-menu-back {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.mq-menu-header {
+
+}
+
+.mq-menu-items {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.mq-menu-footer {
+    margin: 8px 0px;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.mq-main {
+    display: flex;
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mq-main-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    height: 48px;
+    overflow: hidden;
+    display: flex;
+}
+
+.mq-main-body {
+    -ms-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}

@@ -1,0 +1,6 @@
+﻿@if (!string.IsNullOrWhiteSpace(Content.Value))
+{
+    <svg class="mq-icon" viewBox="@ViewBox" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+        @Content
+    </svg>
+}
