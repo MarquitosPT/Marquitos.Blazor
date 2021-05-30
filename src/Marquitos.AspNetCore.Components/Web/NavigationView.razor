@@ -1,11 +1,11 @@
 ﻿@{
     var menuCssClass = _state == Enums.NavigationViewState.Closed ? "mq-menu" : "mq-menu open";
-    var mainBodyCssClass = HeaderFrame != null || Header != null ? "mq-main-body" : "mq-main-body no-header";
 }
 
 <div class="mq-nav" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
-    <div class="@menuCssClass" @ref="_panelElement">
 
+    @if (_displayMode == Enums.NavigationViewDisplayMode.LeftCompact)
+    {
         <div class="mq-menu-header">
             <NavigationViewItem OnClick="(e) => Toggle()">
                 <Icon>
@@ -15,6 +15,22 @@
                 </Icon>
             </NavigationViewItem>
         </div>
+    }
+
+    <div class="@menuCssClass" @ref="_panelElement">
+
+        @if (_displayMode == Enums.NavigationViewDisplayMode.Left)
+        {
+            <div class="mq-menu-header">
+                <NavigationViewItem OnClick="(e) => Toggle()">
+                    <Icon>
+                        <svg viewBox='0 0 512 512'>
+                            <path fill='none' stroke='currentColor' stroke-width='24' d='M80 160h352 M80 256h352 M80 352h352' />
+                        </svg>
+                    </Icon>
+                </NavigationViewItem>
+            </div>
+        }
 
         <CascadingValue TValue="INavigationView" Value="this">
             @if (MenuItems != null)
@@ -57,9 +73,14 @@
                     @Header
                 </div>
             }
+            else if (_displayMode == Enums.NavigationViewDisplayMode.LeftCompact)
+            {
+                <div class="mq-main-header">
+                </div>
+            }
         }
         <CascadingValue TValue="INavigationViewFrame" Value="this" IsFixed="true">
-            <div class="@mainBodyCssClass" @ref="_frameElement">@Frame</div>
+            <div class="mq-main-body" @ref="_frameElement">@Frame</div>
         </CascadingValue>
     </div>
 

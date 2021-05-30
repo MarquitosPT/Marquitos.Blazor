@@ -40,7 +40,9 @@
     }
 
     .mq-btn:focus {
-        outline: 1px dashed white;
+        outline-color: inherit;
+        outline-style: dashed;
+        outline-width: 1px;
         outline-offset: -1px;
     }
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Marquitos.AspNetCore.Components.Events;
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 
@@ -19,5 +21,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         ValueTask SetHeightAsync(ElementReference element, string height);
 
         ValueTask SetPropertyAsync(ElementReference element, string name, string value);
+
+        EventHandler<ResizeArgs> OnWindowResize { get; set; }
     }
 }

@@ -5,6 +5,32 @@
         width: number;
     }
 
+    var windowResizeCallback: any = null;
+
+    let handleResize = function () {
+        if (windowResizeCallback) {
+            windowResizeCallback.invokeMethodAsync("CallbackAsync", { height: window.innerHeight, width: window.innerWidth });
+        }
+    }
+
+    export let initialize = function (obj: any): void {
+
+        windowResizeCallback = obj;
+
+        window.addEventListener("resize", handleResize);
+    }
+
+    export let finalize = function (): void {
+
+        window.removeEventListener("resize", handleResize);
+
+        if (windowResizeCallback) {
+            windowResizeCallback.dispose();
+
+            windowResizeCallback = null;
+        }
+    }
+
     export let getWindowWidth = function (): number {
         return window.innerWidth;
     }

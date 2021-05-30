@@ -1,4 +1,5 @@
 ﻿using Marquitos.AspNetCore.Components.Enums;
+using Marquitos.AspNetCore.Components.Events;
 using Marquitos.AspNetCore.Components.JSInterop;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
@@ -11,7 +12,10 @@ namespace Marquitos.AspNetCore.Components.Web
 {
     public sealed partial class NavigationView : ComponentBase, INavigationView, INavigationViewFrame, IDisposable
     {
+        private const int _windowBreak = 734;
+
         private NavigationViewState _state = NavigationViewState.Closed;
+        private NavigationViewDisplayMode _displayMode = NavigationViewDisplayMode.Left;
         private bool _isOpen = false;
         private bool _playNavigationAnimation = false;
         private ElementReference _panelElement;
@@ -19,6 +23,7 @@ namespace Marquitos.AspNetCore.Components.Web
         private List<INavigationViewItem> _list = new List<INavigationViewItem>();
         private INavigationViewItem _backButton;
         private INavigationViewHeader headerFrame;
+        private int _windowWidth;         
 
         [Inject]
         private IJSAnimation JSAnimation { get; set; }
@@ -114,11 +119,17 @@ namespace Marquitos.AspNetCore.Components.Web
         public void NavigateTo(string uri, bool forceLoad = false)
         {
             NavigationManager.NavigateTo(uri, forceLoad);
+
+            if (_displayMode == NavigationViewDisplayMode.LeftCompact && _isOpen)
+            {
+                Toggle();
+            }
         }
 
         protected override void OnInitialized()
         {
             NavigationManager.LocationChanged += HandleLocationChanged;
+            JSUtils.OnWindowResize += HandleWindowResize;
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -128,29 +139,39 @@ namespace Marquitos.AspNetCore.Components.Web
                 await JSAnimation.InitializeAsync();
                 await JSNavigation.InitializeAsync();
                 await JSUtils.InitializeAsync();
+
+                _windowWidth = await JSUtils.GetWindowWidthAsync();
+
+                if (_windowWidth <= _windowBreak)
+                {
+                    if (_displayMode != NavigationViewDisplayMode.LeftCompact)
+                    {
+                        _displayMode = NavigationViewDisplayMode.LeftCompact;
+                        StateHasChanged();
+                    }
+                }
             }
 
             if (!firstRender)
             {
-                var size = await JSUtils.GetWindowWidthAsync();
-
                 if (_state == NavigationViewState.Openning)
                 {
                     IsOpened = true;
 
-                    if (size > 734)
+                    if (_displayMode == NavigationViewDisplayMode.Left)
                     {
                         await JSAnimation.GrowAsync(_panelElement, 48);
                     }
                     else
                     {
-                        await JSAnimation.GrowAndExpandAsync(_panelElement, 48, 48);
+                        //await JSAnimation.GrowAndExpandAsync(_panelElement, 48, 48);
+                        await JSAnimation.GrowAsync(_panelElement, 0);
                     }
                     
                 }
                 else if (_state == NavigationViewState.Closing)
                 {
-                    if (size > 734)
+                    if (_displayMode == NavigationViewDisplayMode.Left)
                     {
                         await JSAnimation.CompactAsync(_panelElement, 48, async () =>
                         {
@@ -162,16 +183,22 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                     else
                     {
-                        await JSAnimation.CompactAndCollapseAsync(_panelElement, 48, 48, async () =>
+                        //await JSAnimation.CompactAndCollapseAsync(_panelElement, 48, 48, async () =>
+                        //{
+                        //    IsOpened = false;
+                        //    StateHasChanged();
+
+                        //    await Task.CompletedTask;
+                        //});
+
+                        await JSAnimation.CompactAsync(_panelElement, 0, async () =>
                         {
                             IsOpened = false;
                             StateHasChanged();
 
                             await Task.CompletedTask;
                         });
-                    }
-
-                    
+                    }      
                 }
 
                 if (_playNavigationAnimation)
@@ -223,9 +250,32 @@ namespace Marquitos.AspNetCore.Components.Web
             }
         }
 
+        private void HandleWindowResize(object sender, ResizeArgs e)
+        {
+            _windowWidth = e.Width;
+
+            if (_windowWidth <= _windowBreak)
+            {
+                if (_displayMode != NavigationViewDisplayMode.LeftCompact)
+                {
+                    _displayMode = NavigationViewDisplayMode.LeftCompact; 
+                    StateHasChanged();
+                }
+            }
+            else
+            {
+                if (_displayMode != NavigationViewDisplayMode.Left)
+                {
+                    _displayMode = NavigationViewDisplayMode.Left;
+                    StateHasChanged();
+                }
+            }
+        }
+
         public void Dispose()
         {
             NavigationManager.LocationChanged -= HandleLocationChanged;
+            JSUtils.OnWindowResize -= HandleWindowResize;
 
             HeaderFrame = null;
             ActiveMenu = null;

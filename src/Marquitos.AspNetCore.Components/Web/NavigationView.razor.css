@@ -5,8 +5,14 @@
         -ms-flex-direction: row;
         -webkit-flex-direction: row;
         flex-direction: row;
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
         height: 100vh;
         overflow: hidden;
+    }
+
+    .mq-menu-header {
     }
 
     .mq-menu {
@@ -20,7 +26,6 @@
         width: var(--mq-menu-width);
         overflow: hidden;
     }
-
         .mq-menu.open {
             --mq-menu-width: 240px;
         }
@@ -30,9 +35,6 @@
         -ms-flex-direction: column;
         -webkit-flex-direction: column;
         flex-direction: column;
-    }
-
-    .mq-menu-header {
     }
 
     .mq-menu-items {
@@ -89,38 +91,54 @@
         -ms-flex-direction: row;
         -webkit-flex-direction: row;
         flex-direction: row;
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
         height: 100vh;
         overflow: hidden;
     }
 
+    .mq-menu-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+        position: fixed;
+        outline-color: #1e88e5;
+    }
+
     .mq-menu {
-        --mq-menu-width: 48px;
+        --mq-menu-width: 0px;
         background-color: #333;
         color: whitesmoke;
-        display: flex;
+        display: none;
         -ms-flex-direction: column;
         -webkit-flex-direction: column;
         flex-direction: column;
         width: var(--mq-menu-width);
-        height: 48px;
+        height: calc(100vh - 48px);
         overflow: hidden;
         z-index: 1001;
-        position:fixed;
+        position: fixed;
+        margin-top: 48px;
     }
 
         .mq-menu.open {
+            display: flex;
             --mq-menu-width: 240px;
-            height: 100vh;
         }
+
+    @media only screen and (max-width: 480px)
+    {
+        .mq-menu.open {
+            display: flex;
+            --mq-menu-width: 100%;
+        }
+    }
 
     .mq-menu-back {
         display: flex;
         -ms-flex-direction: column;
         -webkit-flex-direction: column;
         flex-direction: column;
-    }
-
-    .mq-menu-header {
     }
 
     .mq-menu-items {
@@ -156,7 +174,7 @@
     .mq-main-header {
         background-color: #f8f9fa;
         border-bottom: 1px solid #e9ecef;
-        height: 48px;
+        height: 49px;
         overflow: hidden;
         display: flex;
         margin-left: 48px;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Marquitos.AspNetCore.Components.Events;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
 using System.Drawing;
@@ -16,11 +17,21 @@ namespace Marquitos.AspNetCore.Components.JSInterop
                "import", "./_content/Marquitos.AspNetCore.Components/js/utils.min.js").AsTask());
         }
 
+        private async Task HandleWindowResizeAsync(ResizeArgs e)
+        {
+            OnWindowResize.Invoke(this, e);
+
+            await Task.CompletedTask;
+        }
+
+        public EventHandler<ResizeArgs> OnWindowResize { get; set; }
+
         public async ValueTask InitializeAsync()
         {
             if (!moduleTask.IsValueCreated)
             {
-                await moduleTask.Value;
+                var module = await moduleTask.Value;
+                await module.InvokeVoidAsync("Utils.initialize", DotNetObjectReference.Create(new JSCallbackAction<ResizeArgs>(HandleWindowResizeAsync)));
             }
         }
 
@@ -29,6 +40,8 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             if (moduleTask.IsValueCreated)
             {
                 var module = await moduleTask.Value;
+
+                await module.InvokeVoidAsync("Utils.finalize");
                 await module.DisposeAsync();
             }
         }

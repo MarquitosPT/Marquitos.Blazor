@@ -1,5 +1,22 @@
 export var Utils;
 (function (Utils) {
+    var windowResizeCallback = null;
+    let handleResize = function () {
+        if (windowResizeCallback) {
+            windowResizeCallback.invokeMethodAsync("CallbackAsync", { height: window.innerHeight, width: window.innerWidth });
+        }
+    };
+    Utils.initialize = function (obj) {
+        windowResizeCallback = obj;
+        window.addEventListener("resize", handleResize);
+    };
+    Utils.finalize = function () {
+        window.removeEventListener("resize", handleResize);
+        if (windowResizeCallback) {
+            windowResizeCallback.dispose();
+            windowResizeCallback = null;
+        }
+    };
     Utils.getWindowWidth = function () {
         return window.innerWidth;
     };
