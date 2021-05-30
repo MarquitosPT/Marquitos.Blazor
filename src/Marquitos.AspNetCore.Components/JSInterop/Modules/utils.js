@@ -1,5 +1,11 @@
 export var Utils;
 (function (Utils) {
+    Utils.getWindowWidth = function () {
+        return window.innerWidth;
+    };
+    Utils.getWindowHeight = function () {
+        return window.innerHeight;
+    };
     Utils.getWidth = function (element) {
         return element.clientWidth;
     };
@@ -11,8 +17,8 @@ export var Utils;
     };
     Utils.getSize = function (element) {
         return {
-            height: element.clientWidth,
-            width: element.clientHeight
+            height: element.clientHeight,
+            width: element.clientWidth
         };
     };
     Utils.resize = function (element, width, heigth) {

@@ -5,6 +5,14 @@
         width: number;
     }
 
+    export let getWindowWidth = function (): number {
+        return window.innerWidth;
+    }
+
+    export let getWindowHeight = function (): number {
+        return window.innerHeight;
+    }
+
     export let getWidth = function (element: HTMLElement): number {
         return element.clientWidth;
     }
@@ -20,8 +28,8 @@
 
     export let getSize = function (element: HTMLElement): Size {
         return {
-            height: element.clientWidth,
-            width: element.clientHeight
+            height: element.clientHeight,
+            width: element.clientWidth
         };
     }
 

@@ -33,6 +33,18 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             }
         }
 
+        public async ValueTask<int> GetWindowWidthAsync()
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<int>("Utils.getWindowWidth");
+        }
+
+        public async ValueTask<int> GetWindowHeightAsync()
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<int>("Utils.getWindowHeight");
+        }
+
         public async ValueTask<int> GetWidthAsync(ElementReference element)
         {
             var module = await moduleTask.Value;

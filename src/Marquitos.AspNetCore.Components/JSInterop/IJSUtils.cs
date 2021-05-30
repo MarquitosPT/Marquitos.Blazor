@@ -7,6 +7,8 @@ namespace Marquitos.AspNetCore.Components.JSInterop
     public interface IJSUtils
     {
         ValueTask InitializeAsync();
+        ValueTask<int> GetWindowWidthAsync();
+        ValueTask<int> GetWindowHeightAsync();
         ValueTask<int> GetWidthAsync(ElementReference element);
         ValueTask<int> GetHeightAsync(ElementReference element);
         ValueTask<string> GetPropertyAsync(ElementReference element, string name);

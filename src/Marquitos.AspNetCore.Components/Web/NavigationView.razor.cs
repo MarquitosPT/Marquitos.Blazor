@@ -132,23 +132,46 @@ namespace Marquitos.AspNetCore.Components.Web
 
             if (!firstRender)
             {
-                var size = await JSUtils.GetSizeAsync(_panelElement);
+                var size = await JSUtils.GetWindowWidthAsync();
 
                 if (_state == NavigationViewState.Openning)
                 {
                     IsOpened = true;
 
-                    await JSAnimation.GrowAndExpandAsync(_panelElement, size.Width, size.Height);
+                    if (size > 734)
+                    {
+                        await JSAnimation.GrowAsync(_panelElement, 48);
+                    }
+                    else
+                    {
+                        await JSAnimation.GrowAndExpandAsync(_panelElement, 48, 48);
+                    }
+                    
                 }
                 else if (_state == NavigationViewState.Closing)
                 {
-                    await JSAnimation.CompactAsync(_panelElement, 48, async () =>
+                    if (size > 734)
                     {
-                        IsOpened = false;
-                        StateHasChanged();
+                        await JSAnimation.CompactAsync(_panelElement, 48, async () =>
+                        {
+                            IsOpened = false;
+                            StateHasChanged();
 
-                        await Task.CompletedTask;
-                    });
+                            await Task.CompletedTask;
+                        });
+                    }
+                    else
+                    {
+                        await JSAnimation.CompactAndCollapseAsync(_panelElement, 48, 48, async () =>
+                        {
+                            IsOpened = false;
+                            StateHasChanged();
+
+                            await Task.CompletedTask;
+                        });
+                    }
+
+                    
                 }
 
                 if (_playNavigationAnimation)
