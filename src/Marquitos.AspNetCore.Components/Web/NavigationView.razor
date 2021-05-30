@@ -1,5 +1,6 @@
 ﻿@{
     var menuCssClass = _state == Enums.NavigationViewState.Closed ? "mq-menu" : "mq-menu open";
+    var mainBodyCssClass = HeaderFrame != null || Header != null ? "mq-main-body" : "mq-main-body no-header";
 }
 
 <div class="mq-nav" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
@@ -58,7 +59,7 @@
             }
         }
         <CascadingValue TValue="INavigationViewFrame" Value="this" IsFixed="true">
-            <div class="mq-main-body" @ref="_frameElement">@Frame</div>
+            <div class="@mainBodyCssClass" @ref="_frameElement">@Frame</div>
         </CascadingValue>
     </div>
 

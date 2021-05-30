@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
+using System.Drawing;
 using System.Threading.Tasks;
 
 namespace Marquitos.AspNetCore.Components.JSInterop
@@ -30,6 +31,30 @@ namespace Marquitos.AspNetCore.Components.JSInterop
                 var module = await moduleTask.Value;
                 await module.DisposeAsync();
             }
+        }
+
+        public async ValueTask<int> GetWidthAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<int>("Utils.getWidth", element);
+        }
+
+        public async ValueTask<int> GetHeightAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<int>("Utils.getHeight", element);
+        }
+
+        public async ValueTask<string> GetPropertyAsync(ElementReference element, string name)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<string>("Utils.getProperty", element, name);
+        }
+
+        public async ValueTask<Size> GetSizeAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<Size>("Utils.getSize", element);
         }
 
         public async ValueTask ResizeAsync(ElementReference element, string width, string height)

@@ -27,6 +27,9 @@ namespace Marquitos.AspNetCore.Components.Web
         private IJSNavigation JSNavigation { get; set; }
 
         [Inject]
+        private IJSUtils JSUtils { get; set; }
+
+        [Inject]
         private NavigationManager NavigationManager { get; set; }
 
         [Parameter]
@@ -124,15 +127,18 @@ namespace Marquitos.AspNetCore.Components.Web
             {
                 await JSAnimation.InitializeAsync();
                 await JSNavigation.InitializeAsync();
+                await JSUtils.InitializeAsync();
             }
 
             if (!firstRender)
             {
+                var size = await JSUtils.GetSizeAsync(_panelElement);
+
                 if (_state == NavigationViewState.Openning)
                 {
                     IsOpened = true;
 
-                    await JSAnimation.GrowAsync(_panelElement, 48);
+                    await JSAnimation.GrowAndExpandAsync(_panelElement, size.Width, size.Height);
                 }
                 else if (_state == NavigationViewState.Closing)
                 {
@@ -151,7 +157,7 @@ namespace Marquitos.AspNetCore.Components.Web
                     await JSAnimation.PlayAsync(AnimationType.SlideInFromBottom, _frameElement);
                 }
 
-                if (IsBackButtonVisible)
+                if (IsBackButtonVisible && _backButton != null)
                 {
                     _backButton.Enabled = await JSNavigation.CanGoBackAsync();
                 }

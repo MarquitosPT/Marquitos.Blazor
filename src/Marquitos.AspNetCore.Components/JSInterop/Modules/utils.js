@@ -1,5 +1,20 @@
 export var Utils;
 (function (Utils) {
+    Utils.getWidth = function (element) {
+        return element.clientWidth;
+    };
+    Utils.getHeight = function (element) {
+        return element.clientHeight;
+    };
+    Utils.getProperty = function (element, name) {
+        return element.style.getPropertyValue(name);
+    };
+    Utils.getSize = function (element) {
+        return {
+            height: element.clientWidth,
+            width: element.clientHeight
+        };
+    };
     Utils.resize = function (element, width, heigth) {
         element.style.width = width;
         element.style.height = heigth;

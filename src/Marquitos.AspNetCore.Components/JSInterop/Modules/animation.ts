@@ -246,4 +246,42 @@
             easing: 'ease'
         });
     }
+
+    export let growAndExpand = function (element: HTMLElement, obj, fromWidth: number = 0, fromHeight: number = 0): void {
+        var keyFrames: Keyframe[] = [
+            {
+                width: fromWidth + 'px',
+                height: fromHeight + 'px',
+                overflow: 'hidden'
+            },
+            {
+                width: element.clientWidth + 'px',
+                height: element.clientHeight + 'px',
+                overflow: 'hidden'
+            }];
+
+        play(keyFrames, element, obj, {
+            duration: 350,
+            easing: 'ease'
+        });
+    }
+
+    export let compactAndCollapse = function (element: HTMLElement, obj, toWidth: number = 0, toHeight: number = 0): void {
+        var keyFrames: Keyframe[] = [
+            {
+                width: element.clientWidth + 'px',
+                height: element.clientHeight + 'px',
+                overflow: 'hidden'
+            },
+            {
+                width: toWidth + 'px',
+                height: toHeight + 'px',
+                overflow: 'hidden'
+            }];
+
+        play(keyFrames, element, obj, {
+            duration: 350,
+            easing: 'ease'
+        });
+    }
 }

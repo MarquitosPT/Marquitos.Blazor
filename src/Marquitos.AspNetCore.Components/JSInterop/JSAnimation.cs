@@ -63,10 +63,22 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             await module.InvokeVoidAsync("Animation.grow", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), from);
         }
 
+        public async ValueTask GrowAndExpandAsync(ElementReference element, int fromWidth, int fromHeight, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.growAndExpand", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), fromWidth, fromHeight);
+        }
+
         public async ValueTask CompactAsync(ElementReference element, int to, Func<Task> callback = null)
         {
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("Animation.compact", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), to);
+        }
+
+        public async ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.compactAndCollapse", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), toWidth, toHeight);
         }
 
         public async ValueTask DisposeAsync()

@@ -228,4 +228,40 @@ export var Animation;
             easing: 'ease'
         });
     };
+    Animation.growAndExpand = function (element, obj, fromWidth = 0, fromHeight = 0) {
+        var keyFrames = [
+            {
+                width: fromWidth + 'px',
+                height: fromHeight + 'px',
+                overflow: 'hidden'
+            },
+            {
+                width: element.clientWidth + 'px',
+                height: element.clientHeight + 'px',
+                overflow: 'hidden'
+            }
+        ];
+        play(keyFrames, element, obj, {
+            duration: 350,
+            easing: 'ease'
+        });
+    };
+    Animation.compactAndCollapse = function (element, obj, toWidth = 0, toHeight = 0) {
+        var keyFrames = [
+            {
+                width: element.clientWidth + 'px',
+                height: element.clientHeight + 'px',
+                overflow: 'hidden'
+            },
+            {
+                width: toWidth + 'px',
+                height: toHeight + 'px',
+                overflow: 'hidden'
+            }
+        ];
+        play(keyFrames, element, obj, {
+            duration: 350,
+            easing: 'ease'
+        });
+    };
 })(Animation || (Animation = {}));
