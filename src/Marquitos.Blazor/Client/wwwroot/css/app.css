@@ -1,7 +1,14 @@
-﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+﻿/*@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');*/
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    height: 100%;
+}
+
+#app {
+    height:100%;
+    overflow:hidden;
 }
 
 a, .btn-link {
@@ -47,16 +54,4 @@ a, .btn-link {
         position: absolute;
         right: 0.75rem;
         top: 0.5rem;
-    }
-
-.mq-menu-header .mq-btn {
-    background-color: #ff0000;
-}
-
-    .mq-menu-header .mq-btn:hover:enabled {
-        background-color: #ff0000;
-    }
-
-    .mq-menu-header .mq-btn:active:enabled, .mq-menu-header .mq-btn.selected:enabled {
-        background-color: #ff0000;
     }

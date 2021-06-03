@@ -164,7 +164,6 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                     else
                     {
-                        //await JSAnimation.GrowAndExpandAsync(_panelElement, 48, 48);
                         await JSAnimation.GrowAsync(_panelElement, 0);
                     }
                     
@@ -183,14 +182,6 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                     else
                     {
-                        //await JSAnimation.CompactAndCollapseAsync(_panelElement, 48, 48, async () =>
-                        //{
-                        //    IsOpened = false;
-                        //    StateHasChanged();
-
-                        //    await Task.CompletedTask;
-                        //});
-
                         await JSAnimation.CompactAsync(_panelElement, 0, async () =>
                         {
                             IsOpened = false;

@@ -1,9 +1,7 @@
 ﻿@{
     var menuCssClass = _state == Enums.NavigationViewState.Closed ? "mq-menu" : "mq-menu open";
 }
-
 <div class="mq-nav" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
-
     @if (_displayMode == Enums.NavigationViewDisplayMode.LeftCompact)
     {
         <div class="mq-menu-header">
@@ -14,13 +12,51 @@
                     </svg>
                 </Icon>
             </NavigationViewItem>
+            <div class="mq-main-header">
+                @if (HeaderFrame != null)
+                {
+                    @HeaderFrame.ChildContent
+                }
+                else if (Header != null)
+                {
+                    @Header
+                }
+            </div>
+        </div>
+        <div class="mq-main">
+            <CascadingValue TValue="INavigationViewFrame" Value="this" IsFixed="true">
+                <div class="mq-main-body" @ref="_frameElement">@Frame</div>
+            </CascadingValue>
+        </div>
+        <div class="@menuCssClass" @ref="_panelElement">
+            <CascadingValue TValue="INavigationView" Value="this">
+                @if (MenuItems != null)
+                {
+                    <div class="mq-menu-items">@MenuItems</div>
+                }
+                @if (FooterItems != null)
+                {
+                    <div class="mq-menu-footer">@FooterItems</div>
+                }
+            </CascadingValue>
+            @if (IsBackButtonVisible)
+            {
+                <div class="mq-menu-back">
+                    <NavigationViewItem OnClick="async (e) => await BackAsync()" @ref="_backButton" Enabled="false" Tooltip="@BackButtonTitle">
+                        <Icon>
+                            <svg fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                            </svg>
+                        </Icon>
+                        <Content>@BackButtonTitle</Content>
+                    </NavigationViewItem>
+                </div>
+            }
         </div>
     }
-
-    <div class="@menuCssClass" @ref="_panelElement">
-
-        @if (_displayMode == Enums.NavigationViewDisplayMode.Left)
-        {
+    else if (_displayMode == Enums.NavigationViewDisplayMode.Left)
+    {
+        <div class="@menuCssClass" @ref="_panelElement">
             <div class="mq-menu-header">
                 <NavigationViewItem OnClick="(e) => Toggle()">
                     <Icon>
@@ -30,58 +66,46 @@
                     </Icon>
                 </NavigationViewItem>
             </div>
-        }
-
-        <CascadingValue TValue="INavigationView" Value="this">
-            @if (MenuItems != null)
+            <CascadingValue TValue="INavigationView" Value="this">
+                @if (MenuItems != null)
+                {
+                    <div class="mq-menu-items">@MenuItems</div>
+                }
+                @if (FooterItems != null)
+                {
+                    <div class="mq-menu-footer">@FooterItems</div>
+                }
+            </CascadingValue>
+            @if (IsBackButtonVisible)
             {
-                <div class="mq-menu-items">@MenuItems</div>
+                <div class="mq-menu-back">
+                    <NavigationViewItem OnClick="async (e) => await BackAsync()" @ref="_backButton" Enabled="false" Tooltip="@BackButtonTitle">
+                        <Icon>
+                            <svg fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                            </svg>
+                        </Icon>
+                        <Content>@BackButtonTitle</Content>
+                    </NavigationViewItem>
+                </div>
             }
-            @if (FooterItems != null)
+        </div>
+        <div class="mq-main">
+            @if (HeaderFrame != null)
             {
-                <div class="mq-menu-footer">@FooterItems</div>
+                <div class="mq-main-header">
+                    @HeaderFrame.ChildContent
+                </div>
             }
-        </CascadingValue>
-
-        @if (IsBackButtonVisible)
-        {
-            <div class="mq-menu-back">
-                <NavigationViewItem OnClick="async (e) => await BackAsync()" @ref="_backButton" Enabled="false" Tooltip="@BackButtonTitle">
-                    <Icon>
-                        <svg fill="currentColor" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-                        </svg>
-                    </Icon>
-                    <Content>@BackButtonTitle</Content>
-                </NavigationViewItem>
-            </div>
-        }
-    </div>
-
-    <div class="mq-main">
-        @if (HeaderFrame != null)
-        {
-            <div class="mq-main-header">
-                @HeaderFrame.ChildContent
-            </div>
-        }
-        else
-        {
-            if (Header != null)
+            else if (Header != null)
             {
                 <div class="mq-main-header">
                     @Header
                 </div>
             }
-            else if (_displayMode == Enums.NavigationViewDisplayMode.LeftCompact)
-            {
-                <div class="mq-main-header">
-                </div>
-            }
-        }
-        <CascadingValue TValue="INavigationViewFrame" Value="this" IsFixed="true">
-            <div class="mq-main-body" @ref="_frameElement">@Frame</div>
-        </CascadingValue>
-    </div>
-
+            <CascadingValue TValue="INavigationViewFrame" Value="this" IsFixed="true">
+                <div class="mq-main-body" @ref="_frameElement">@Frame</div>
+            </CascadingValue>
+        </div>
+    }
 </div>
