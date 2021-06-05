@@ -3,11 +3,11 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     overflow: hidden;
-    position:absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
 #app {
