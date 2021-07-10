@@ -1,5 +1,6 @@
 ﻿using Marquitos.AspNetCore.Components.Extensions.Configuration.Options;
 using Marquitos.AspNetCore.Components.JSInterop;
+using Marquitos.AspNetCore.Components.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -15,6 +16,13 @@ namespace Marquitos.AspNetCore.Components.Extensions.Configuration
                 services.AddOptions();
                 services.Configure(options);
             }
+            else
+            {
+                services.AddOptions<ConfigurationOptions>();
+            }
+
+            // Services
+            services.AddScoped<IConfigurationService, ConfigurationService>();
 
             // JSInterop Services
             services.AddScoped<IJSAnimation, JSAnimation>();

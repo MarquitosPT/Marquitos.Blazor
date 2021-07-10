@@ -19,7 +19,9 @@ namespace Marquitos.Blazor.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddMarquitosComponents();
+            builder.Services.AddMarquitosComponents(o => {
+                o.GlobalTheme = AspNetCore.Components.Enums.Theme.Bootstrap;
+            });
 
             await builder.Build().RunAsync();
         }
