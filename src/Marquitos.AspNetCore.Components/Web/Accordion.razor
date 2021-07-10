@@ -1,0 +1,37 @@
+﻿@inherits Component
+@{
+    var cssClass = "mq-accordion";
+    var cssFlushClass = "mq-accordion-flush";
+
+    switch (Theme)
+    {
+        case Enums.Theme.Default:
+            cssClass = "mq-accordion";
+            cssFlushClass = "mq-accordion-flush";
+            break;
+        case Enums.Theme.Bootstrap:
+            cssClass = "accordion";
+            cssFlushClass = "accordion-flush";
+            break;
+        default:
+            break;
+    }
+
+    switch (Style)
+    {
+        case Enums.AccordionStyle.Normal:
+            cssFlushClass = "";
+            break;
+        case Enums.AccordionStyle.Flush:
+            break;
+        default:
+            break;
+    }
+
+    cssClass = cssClass + cssFlushClass;
+}
+<div class="@cssClass" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+    <CascadingValue TValue="IAccordion" IsFixed="true" Value="this">
+        @ChildContent
+    </CascadingValue> 
+</div>

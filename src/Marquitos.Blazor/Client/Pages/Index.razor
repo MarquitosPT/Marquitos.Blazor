@@ -1,13 +1,51 @@
 ﻿@page "/"
 
 <Breadcrumb>
-  <BreadcrumbItem>Home</BreadcrumbItem>  
+    <BreadcrumbItem>Home</BreadcrumbItem>
 </Breadcrumb>
 
-<h1>Hello, world!</h1>
+<h1>Welcome to Blazor Components</h1>
+<p>Blazor Components is a open source library.</p>
 
-<Card>
-    <CardHeader>Card Title</CardHeader>
-    <CardBody>Text</CardBody>
-    <CardFooter>Footer Text</CardFooter>
-</Card>
+<section>
+    <h2>Breadcrumb Component</h2>
+    <p>
+        <Breadcrumb>
+            <BreadcrumbItem Uri="#">Home</BreadcrumbItem>
+            <BreadcrumbItem Uri="#">Breadcrumb</BreadcrumbItem>
+            <BreadcrumbItem>Example</BreadcrumbItem>
+        </Breadcrumb>
+    </p>
+</section>
+
+<section>
+    <h2>Card Component</h2>
+    <p>
+        <Card>
+            <CardHeader>Card Title</CardHeader>
+            <CardBody>Text</CardBody>
+            <CardFooter>Footer Text</CardFooter>
+        </Card>
+    </p>
+</section>
+
+<section>
+    <h2>Accordion Component</h2>
+    <p>
+        <Accordion>
+            <AccordionItem IsOpen="true">
+                <Header>Item 1</Header>
+                <Body>
+                    Content of item 1
+                </Body>
+            </AccordionItem>
+            <AccordionItem>
+                <Header>Item 2</Header>
+                <Body>
+                    Content of item 2
+                </Body>
+            </AccordionItem>
+        </Accordion>
+    </p>
+</section>
+

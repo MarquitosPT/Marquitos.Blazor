@@ -1,0 +1,12 @@
+﻿@inherits Component
+<div class="accordion-item">
+    <h2 class="accordion-header">
+        <button class="@GetButtonCssClass()" type="button" @onclick="(e) => Toggle()">@Header</button>
+    </h2>
+    @if (_state != Enums.AccordionItemState.Closed)
+    {
+        <div class="accordion-collapse" @ref="_panelElement">
+            <div class="accordion-body">@Body</div>
+        </div>
+    }
+</div>
