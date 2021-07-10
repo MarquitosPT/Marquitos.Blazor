@@ -1,0 +1,42 @@
+﻿@inherits Component
+@{
+    var cssCardClass = "mq-card";
+    var cssCardHeaderClass = "mq-card-header";
+    var cssCardBodyClass = "mq-card-body";
+    var cssCardFooterClass = "mq-card-footer";
+
+    switch (Theme)
+    {
+        case Enums.Theme.Default:
+            cssCardClass = "mq-card";
+            cssCardHeaderClass = "mq-card-header";
+            cssCardBodyClass = "mq-card-body";
+            cssCardFooterClass = "mq-card-footer";
+            break;
+        case Enums.Theme.Bootstrap:
+            cssCardClass = "card";
+            cssCardHeaderClass = "card-header";
+            cssCardBodyClass = "card-body";
+            cssCardFooterClass = "card-footer";
+            break;
+        default:
+            break;
+    }
+}
+@if (CardHeader != null || CardBody != null || CardFooter != null)
+{
+    <div class="@cssCardClass" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+        @if (CardHeader != null)
+        {
+            <div class="@cssCardHeaderClass">@CardHeader</div>
+        }
+        @if (CardBody != null)
+        {
+            <div class="@cssCardBodyClass">@CardBody</div>
+        }
+        @if (CardFooter != null)
+        {
+            <div class="@cssCardFooterClass">@CardFooter</div>
+        }
+    </div>
+}

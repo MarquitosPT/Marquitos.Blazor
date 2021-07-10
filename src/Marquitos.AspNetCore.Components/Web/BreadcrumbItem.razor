@@ -1,0 +1,28 @@
+﻿@inherits Component
+@{
+    var cssClass = "mq-breadcrumb-item";
+    var cssActiveClass = "mq-breadcrumb-item active";
+
+    switch (Theme)
+    {
+        case Enums.Theme.Default:
+            cssClass = "mq-breadcrumb-item";
+            cssActiveClass = "mq-breadcrumb-item active";
+            break;
+        case Enums.Theme.Bootstrap:
+            cssClass = "breadcrumb-item";
+            cssActiveClass = "breadcrumb-item active";
+            break;
+        default:
+            break;
+    }
+}
+
+@if (Uri == null)
+{
+    <li class="@cssActiveClass" aria-current="page">@ChildContent</li>
+}
+else
+{
+    <li class="@cssClass"><a href="@Uri">@ChildContent</a></li>
+}

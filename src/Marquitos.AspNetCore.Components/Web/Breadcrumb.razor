@@ -1,0 +1,22 @@
+﻿@inherits Component
+@{
+    var cssClass = "mq-breadcrumb";
+
+    switch (Theme)
+    {
+        case Enums.Theme.Default:
+            cssClass = "mq-breadcrumb";
+            break;
+        case Enums.Theme.Bootstrap:
+            cssClass = "breadcrumb";
+            break;
+        default:
+            break;
+    }
+}
+
+<nav aria-label="breadcrumb" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+    <ol class="@cssClass">
+        @ChildContent
+    </ol>
+</nav>
