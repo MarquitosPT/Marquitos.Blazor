@@ -213,7 +213,7 @@
         });
     }
 
-    export let grow = function (element: HTMLElement, obj, from: number = 0): void {
+    export let grow = function (element: HTMLElement, obj, from: number = 0, duration: number = 350): void {
         var keyFrames: Keyframe[] = [
             {
                 width: from + 'px',
@@ -225,8 +225,8 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
-            easing: 'ease'
+            duration: duration,
+            easing: 'ease-in'
         });
     }
 
