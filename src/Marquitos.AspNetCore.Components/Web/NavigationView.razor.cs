@@ -182,7 +182,7 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                     else
                     {
-                        await JSAnimation.CompactAsync(_panelElement, 0, async () =>
+                        await JSAnimation.CompactAsync(_panelElement, 0, 250, async () =>
                         {
                             IsOpened = false;
                             StateHasChanged();

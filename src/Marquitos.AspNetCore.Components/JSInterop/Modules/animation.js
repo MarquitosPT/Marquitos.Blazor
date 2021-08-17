@@ -176,7 +176,7 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     };
@@ -192,11 +192,11 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     };
-    Animation.grow = function (element, obj, from = 0, duration = 350) {
+    Animation.grow = function (element, obj, from = 0, duration = 300) {
         var keyFrames = [
             {
                 width: from + 'px',
@@ -209,10 +209,10 @@ export var Animation;
         ];
         play(keyFrames, element, obj, {
             duration: duration,
-            easing: 'ease-in'
+            easing: 'ease-out'
         });
     };
-    Animation.compact = function (element, obj, to = 0) {
+    Animation.compact = function (element, obj, to = 0, duration = 300) {
         var keyFrames = [
             {
                 width: element.clientWidth + 'px',
@@ -224,8 +224,8 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
-            easing: 'ease'
+            duration: duration,
+            easing: 'ease-out'
         });
     };
     Animation.growAndExpand = function (element, obj, fromWidth = 0, fromHeight = 0) {
@@ -242,7 +242,7 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     };
@@ -260,7 +260,7 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     };

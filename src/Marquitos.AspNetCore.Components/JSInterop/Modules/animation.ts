@@ -191,7 +191,7 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });       
     }
@@ -208,12 +208,12 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     }
 
-    export let grow = function (element: HTMLElement, obj, from: number = 0, duration: number = 350): void {
+    export let grow = function (element: HTMLElement, obj, from: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
                 width: from + 'px',
@@ -226,11 +226,11 @@
 
         play(keyFrames, element, obj, {
             duration: duration,
-            easing: 'ease-in'
+            easing: 'ease-out'
         });
     }
 
-    export let compact = function (element: HTMLElement, obj, to: number = 0): void {
+    export let compact = function (element: HTMLElement, obj, to: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
                 width: element.clientWidth + 'px',
@@ -242,8 +242,8 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
-            easing: 'ease'
+            duration: duration,
+            easing: 'ease-out'
         });
     }
 
@@ -261,7 +261,7 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     }
@@ -280,7 +280,7 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 350,
+            duration: 300,
             easing: 'ease'
         });
     }
