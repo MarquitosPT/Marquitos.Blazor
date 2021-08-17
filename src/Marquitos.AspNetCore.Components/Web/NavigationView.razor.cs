@@ -164,7 +164,7 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                     else
                     {
-                        await JSAnimation.GrowAsync(_panelElement, 0);
+                        await JSAnimation.GrowAsync(_panelElement, 0, 250);
                     }
                     
                 }

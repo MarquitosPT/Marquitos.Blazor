@@ -196,7 +196,7 @@ export var Animation;
             easing: 'ease'
         });
     };
-    Animation.grow = function (element, obj, from = 0) {
+    Animation.grow = function (element, obj, from = 0, duration = 350) {
         var keyFrames = [
             {
                 width: from + 'px',
@@ -208,8 +208,8 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 350,
-            easing: 'ease'
+            duration: duration,
+            easing: 'ease-in'
         });
     };
     Animation.compact = function (element, obj, to = 0) {
