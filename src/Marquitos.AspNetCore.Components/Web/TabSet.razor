@@ -1,0 +1,26 @@
+﻿@*@inherits Component*@
+@{
+    var cssClass = "nav-pills";
+
+    switch (Style)
+    {
+        case Enums.TabSetStyle.Pills:
+            cssClass = "nav-pills";
+            break;
+        case Enums.TabSetStyle.Tabs:
+            cssClass = "nav-tabs";
+            break;
+        default:
+            break;
+    }
+}
+<ul class="nav @cssClass" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+    <CascadingValue IsFixed="true" TValue="ITabSet" Value="this">
+        @ChildContent
+    </CascadingValue>
+</ul>
+<div class="tab-content border-left border-right border-bottom mb-3">
+    <div class="p-3">
+        @ActivePage?.ChildContent
+    </div>
+</div>
