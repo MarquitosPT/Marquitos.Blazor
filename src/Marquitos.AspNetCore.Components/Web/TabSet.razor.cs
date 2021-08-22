@@ -1,4 +1,5 @@
-﻿using Marquitos.AspNetCore.Components.Enums;
+﻿using System;
+using Marquitos.AspNetCore.Components.Enums;
 using Microsoft.AspNetCore.Components;
 
 namespace Marquitos.AspNetCore.Components.Web
