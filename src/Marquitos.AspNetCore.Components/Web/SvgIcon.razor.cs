@@ -17,12 +17,15 @@ namespace Marquitos.AspNetCore.Components.Web
         [Parameter]
         public string Source { get; set; }
 
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
+
         [Inject]
         private IJSFile JSFile { get; set; }
 
         private MarkupString Content { get; set; }
 
-        private string ViewBox { get; set; }
+        private string ViewBox { get; set; } = "0 0 16 16";
 
         /// <inheritdoc />
         protected override async Task OnInitializedAsync()

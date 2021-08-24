@@ -1,6 +1,13 @@
-﻿@if (!string.IsNullOrWhiteSpace(Content.Value))
+﻿@if (ChildContent != null || !string.IsNullOrWhiteSpace(Content.Value))
 {
-    <svg class="mq-icon" viewBox="@ViewBox" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+<svg class="mq-icon" viewBox="@ViewBox" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+    else
+    {
         @Content
-    </svg>
+    }
+</svg>
 }

@@ -4,11 +4,11 @@
     <BreadcrumbItem>Home</BreadcrumbItem>
 </Breadcrumb>
 
-<h1>Welcome to Blazor Components</h1>
+<h2>Welcome to Blazor Components</h2>
 <p>Blazor Components is a open source library.</p>
 
 <section>
-    <h2>Breadcrumb Component</h2>
+    <h3>Breadcrumb Component</h3>
     <p>
         <Breadcrumb>
             <BreadcrumbItem Uri="#">Home</BreadcrumbItem>
@@ -19,18 +19,32 @@
 </section>
 
 <section>
-    <h2>Card Component</h2>
+    <h3>Card Component</h3>
     <p>
         <Card>
-            <CardHeader>Card Title</CardHeader>
+            <CardHeader>
+                Card Title
+            </CardHeader>
             <CardBody>Text</CardBody>
             <CardFooter>Footer Text</CardFooter>
         </Card>
     </p>
+    <p>
+        <CardTabSet>
+            <TabPage Title="Page 1">Content of page 1</TabPage>
+            <TabPage Title="Page 2">Content of page 2</TabPage>
+        </CardTabSet>
+    </p>
+    <p>
+        <CardTabSet Style="TabSetStyle.Pills">
+            <TabPage Title="Page 1">Content of page 1</TabPage>
+            <TabPage Title="Page 2">Content of page 2</TabPage>
+        </CardTabSet>
+    </p>
 </section>
 
 <section>
-    <h2>Accordion Component</h2>
+    <h3>Accordion Component</h3>
     <p>
         <Accordion>
             <AccordionItem IsOpen="true">
@@ -49,3 +63,31 @@
     </p>
 </section>
 
+<section>
+    <h3>TabSet Component</h3>
+    <p>
+        <TabSet>
+            <TabPage Title="Page 1">Content of page 1</TabPage>
+            <TabPage Title="Page 2">Content of page 2</TabPage>
+        </TabSet>
+    </p>
+    <p>
+        <TabSet Style="TabSetStyle.Pills">
+            <TabPage Title="Page 1">Content of page 1</TabPage>
+            <TabPage Title="Page 2">Content of page 2</TabPage>
+        </TabSet>
+    </p>
+</section>
+
+<section>
+    <h3>SvgIcon Component</h3>
+    <p>
+        <SvgIcon>
+            <path d="M2,4.5 L14,4.5 M2,7.5 L14,7.5 M2,10.5 L14,10.5" style="stroke: currentColor; stroke-linecap: round;" />
+        </SvgIcon>
+        <SvgIcon>
+            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+        </SvgIcon>
+    </p>
+</section>

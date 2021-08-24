@@ -1,0 +1,26 @@
+﻿@inherits Component
+@{
+    var cssClass = "";
+
+    switch (Style)
+    {
+        case Enums.TabSetStyle.Pills:
+            cssClass = "nav nav-pills card-header-pills";
+            break;
+        case Enums.TabSetStyle.Tabs:
+            cssClass = "nav nav-tabs card-header-tabs";
+            break;
+        default:
+            break;
+    }
+}
+<div class="card mb-3">
+    <div class="card-header">
+        <CascadingValue TValue="ITabSet" IsFixed="true" Value="this">
+            <ul class="@cssClass">
+                @ChildContent
+            </ul>
+        </CascadingValue>
+    </div>
+    <div class="card-body">@ActivePage?.ChildContent</div>
+</div>

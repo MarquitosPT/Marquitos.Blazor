@@ -14,12 +14,12 @@
             break;
     }
 }
-<ul class="nav @cssClass" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+<ul class="nav @cssClass" role="tablist" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
     <CascadingValue IsFixed="true" TValue="ITabSet" Value="this">
         @ChildContent
     </CascadingValue>
 </ul>
-<div class="tab-content border-left border-right border-bottom mb-3">
+<div class="tab-content border-start border-end border-bottom mb-3" role="tabpanel">
     <div class="p-3">
         @ActivePage?.ChildContent
     </div>

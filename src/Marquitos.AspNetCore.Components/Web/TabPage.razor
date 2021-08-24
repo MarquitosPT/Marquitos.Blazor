@@ -1,0 +1,10 @@
+﻿@inherits Component
+@{
+    var cssClass = "nav-link";
+
+    if (Container.ActivePage == this)
+    {
+        cssClass += " active";
+    }
+}
+<li class="nav-item" role="presentation"><button class="@cssClass" role="tab" @onclick="_activateDelegate">@Title</button></li>
