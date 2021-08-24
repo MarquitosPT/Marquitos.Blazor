@@ -16,11 +16,11 @@
 }
 <div class="card mb-3">
     <div class="card-header">
-        <CascadingValue TValue="ITabSet" IsFixed="true" Value="this">
-            <ul class="@cssClass">
+        <ul class="nav @cssClass" role="tablist">
+            <CascadingValue IsFixed="true" TValue="ITabSet" Value="this">
                 @ChildContent
-            </ul>
-        </CascadingValue>
+            </CascadingValue>
+        </ul>
     </div>
-    <div class="card-body">@ActivePage?.ChildContent</div>
+    <div class="card-body" role="tabpanel">@ActivePage?.ChildContent</div>
 </div>
