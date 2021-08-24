@@ -1,11 +1,37 @@
 ﻿@inherits Component
+@{
+    var cssCollapse = "accordion-collapse";
+    var cssButtonClass = "accordion-button";
+
+    switch (_state)
+    {
+        case Enums.AccordionItemState.Openning:
+            cssCollapse += " openning";
+            break;
+
+        case Enums.AccordionItemState.Open:
+            break;
+
+        case Enums.AccordionItemState.Closing:
+            cssCollapse += " closing";
+            cssButtonClass += " collapsed";
+            break;
+
+        case Enums.AccordionItemState.Closed:
+            cssButtonClass += " collapsed";
+            break;
+
+        default:
+            break;
+    }
+}
 <div class="accordion-item">
     <h2 class="accordion-header">
-        <button class="@GetButtonCssClass()" type="button" @onclick="(e) => Toggle()">@Header</button>
+        <button class="@cssButtonClass" type="button" @onclick="(e) => Toggle()">@Header</button>
     </h2>
     @if (_state != Enums.AccordionItemState.Closed)
     {
-        <div class="accordion-collapse" @ref="_panelElement">
+        <div class="@cssCollapse" @ref="_panelElement">
             <div class="accordion-body">@Body</div>
         </div>
     }

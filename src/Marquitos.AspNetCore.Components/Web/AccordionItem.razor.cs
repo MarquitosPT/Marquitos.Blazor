@@ -99,16 +99,23 @@ namespace Marquitos.AspNetCore.Components.Web
         /// <inheritdoc />
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await base.OnAfterRenderAsync(firstRender);
-
-            if (!firstRender)
+            if (firstRender)
+            {
+                await JSAnimation.InitializeAsync();
+            }
+            else
             {
                 if (_state == AccordionItemState.Openning)
                 {
                     IsOpen = true;
 
                     Container.Activate(this);
-                    await JSAnimation.PlayAsync(AnimationType.Expand, _panelElement);
+                    await JSAnimation.PlayAsync(AnimationType.Expand, _panelElement, async () =>
+                    {
+                        StateHasChanged();
+
+                        await Task.CompletedTask;
+                    });
                 }
                 else if (_state == AccordionItemState.Closing)
                 {
@@ -121,35 +128,6 @@ namespace Marquitos.AspNetCore.Components.Web
                     });
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets the button CSS class based on item state
-        /// </summary>
-        /// <returns>A string representing the CSS class for header button</returns>
-        private string GetButtonCssClass()
-        {
-            var result = "accordion-button";
-
-            switch (_state)
-            {
-                case AccordionItemState.Openning:
-                    result = "accordion-button";
-                    break;
-                case AccordionItemState.Open:
-                    result = "accordion-button";
-                    break;
-                case AccordionItemState.Closing:
-                    result = "accordion-button collapsed";
-                    break;
-                case AccordionItemState.Closed:
-                    result = "accordion-button collapsed";
-                    break;
-                default:
-                    break;
-            }
-
-            return result;
         }
     }
 }

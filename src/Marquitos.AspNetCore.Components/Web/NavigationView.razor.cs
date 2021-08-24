@@ -151,8 +151,7 @@ namespace Marquitos.AspNetCore.Components.Web
                     }
                 }
             }
-
-            if (!firstRender)
+            else
             {
                 if (_state == NavigationViewState.Openning)
                 {
