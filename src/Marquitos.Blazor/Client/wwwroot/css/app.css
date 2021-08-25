@@ -10,6 +10,10 @@ html, body {
     bottom: 0px;
 }
 
+section {
+    margin-bottom: 1rem;
+}
+
 #app {
     height:100%;
     overflow:hidden;
@@ -59,3 +63,18 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.bd-example {
+    position: relative;
+    padding: 1rem;
+    margin: .50rem 0;
+    border: solid #dee2e6;
+    border-width: 1px;
+}
+
+@media (min-width: 576px)
+{
+    .bd-example {
+        padding: 1.5rem;
+    }
+}

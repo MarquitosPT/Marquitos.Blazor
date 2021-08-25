@@ -1,14 +1,18 @@
 ﻿@inherits Component
 @{
     var cssClass = "nav-pills";
+    var cssContentClass = "tab-content";
+    var cssInnerContentClass = "";
 
     switch (Style)
     {
         case Enums.TabSetStyle.Pills:
-            cssClass = "nav-pills";
+            cssClass = "nav-pills mb-3";
             break;
         case Enums.TabSetStyle.Tabs:
             cssClass = "nav-tabs";
+            cssContentClass += " border-start border-end border-bottom";
+            cssInnerContentClass = "p-3";
             break;
         default:
             break;
@@ -19,8 +23,8 @@
         @ChildContent
     </CascadingValue>
 </ul>
-<div class="tab-content border-start border-end border-bottom mb-3" role="tabpanel">
-    <div class="p-3">
+<div class="@cssContentClass" role="tabpanel">
+    <div class="@cssInnerContentClass">
         @ActivePage?.ChildContent
     </div>
 </div>

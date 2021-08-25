@@ -8,86 +8,142 @@
 <p>Blazor Components is a open source library.</p>
 
 <section>
+    <h3>Accordion Component</h3>
+    <p>
+        The default behaviour will be one tab opened at time.
+        <div class="bd-example">
+            <Accordion>
+                <AccordionItem IsOpen="true">
+                    <Header>Item 1</Header>
+                    <Body>
+                        Content of item 1
+                    </Body>
+                </AccordionItem>
+                <AccordionItem>
+                    <Header>Item 2</Header>
+                    <Body>
+                        Content of item 2
+                    </Body>
+                </AccordionItem>
+                <AccordionItem>
+                    <Header>Item 3</Header>
+                    <Body>
+                        Content of item 3
+                    </Body>
+                </AccordionItem>
+            </Accordion>
+        </div>
+    </p>
+    <p>
+        The Accordion also lets multiple panels open.
+        <div class="bd-example">
+            <Accordion AllowMultiplePanelsOpen="true">
+                <AccordionItem IsOpen="true">
+                    <Header>Item 1</Header>
+                    <Body>
+                        Content of item 1
+                    </Body>
+                </AccordionItem>
+                <AccordionItem>
+                    <Header>Item 2</Header>
+                    <Body>
+                        Content of item 2
+                    </Body>
+                </AccordionItem>
+                <AccordionItem>
+                    <Header>Item 3</Header>
+                    <Body>
+                        Content of item 3
+                    </Body>
+                </AccordionItem>
+            </Accordion>
+        </div>
+    </p>
+</section>
+
+<section>
     <h3>Breadcrumb Component</h3>
     <p>
-        <Breadcrumb>
-            <BreadcrumbItem Uri="#">Home</BreadcrumbItem>
-            <BreadcrumbItem Uri="#">Breadcrumb</BreadcrumbItem>
-            <BreadcrumbItem>Example</BreadcrumbItem>
-        </Breadcrumb>
+        <div class="bd-example">
+            <Breadcrumb>
+                <BreadcrumbItem Uri="#">Home</BreadcrumbItem>
+                <BreadcrumbItem Uri="#">Breadcrumb</BreadcrumbItem>
+                <BreadcrumbItem>Example</BreadcrumbItem>
+            </Breadcrumb>
+        </div>
     </p>
 </section>
 
 <section>
     <h3>Card Component</h3>
     <p>
-        <Card>
-            <CardHeader>
-                Card Title
-            </CardHeader>
-            <CardBody>Text</CardBody>
-            <CardFooter>Footer Text</CardFooter>
-        </Card>
+        <div class="bd-example">
+            <Card>
+                <CardHeader>
+                    Card Title
+                </CardHeader>
+                <CardBody>Text</CardBody>
+                <CardFooter>Footer Text</CardFooter>
+            </Card>
+        </div>
     </p>
     <p>
-        <CardTabSet>
-            <TabPage Title="Page 1">Content of page 1</TabPage>
-            <TabPage Title="Page 2">Content of page 2</TabPage>
-        </CardTabSet>
+        There is also a CardTabSet component to work with tabs.
+        <div class="bd-example">
+            <CardTabSet>
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+                <TabPage Title="Page 3">Content of page 3</TabPage>
+            </CardTabSet>
+        </div>
+        
     </p>
     <p>
-        <CardTabSet Style="TabSetStyle.Pills">
-            <TabPage Title="Page 1">Content of page 1</TabPage>
-            <TabPage Title="Page 2">Content of page 2</TabPage>
-        </CardTabSet>
-    </p>
-</section>
-
-<section>
-    <h3>Accordion Component</h3>
-    <p>
-        <Accordion>
-            <AccordionItem IsOpen="true">
-                <Header>Item 1</Header>
-                <Body>
-                    Content of item 1
-                </Body>
-            </AccordionItem>
-            <AccordionItem>
-                <Header>Item 2</Header>
-                <Body>
-                    Content of item 2
-                </Body>
-            </AccordionItem>
-        </Accordion>
+        The CardTabSet component also works with pills.
+        <div class="bd-example">
+            <CardTabSet Style="TabSetStyle.Pills">
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+                <TabPage Title="Page 3">Content of page 3</TabPage>
+            </CardTabSet>
+        </div>
     </p>
 </section>
 
 <section>
     <h3>TabSet Component</h3>
     <p>
-        <TabSet>
-            <TabPage Title="Page 1">Content of page 1</TabPage>
-            <TabPage Title="Page 2">Content of page 2</TabPage>
-        </TabSet>
-    </p>
+        By default the TabSet component will render as tabs.
+        <div class="bd-example">
+            <TabSet>
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+            </TabSet>
+        </div>
+    </p>    
     <p>
-        <TabSet Style="TabSetStyle.Pills">
-            <TabPage Title="Page 1">Content of page 1</TabPage>
-            <TabPage Title="Page 2">Content of page 2</TabPage>
-        </TabSet>
+        The TabSet component also works with pills.
+        <div class="bd-example">
+            <TabSet Style="TabSetStyle.Pills">
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+            </TabSet>
+        </div>
     </p>
+    
 </section>
 
 <section>
     <h3>SvgIcon Component</h3>
     <p>
-        <SvgIcon>
-            <path d="M2,4.5 L14,4.5 M2,7.5 L14,7.5 M2,10.5 L14,10.5" style="stroke: currentColor; stroke-linecap: round;" />
-        </SvgIcon>
-        <SvgIcon>
-            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-        </SvgIcon>
+        <div class="bd-example">
+            <SvgIcon>
+                <path d="M2,4.5 L14,4.5 M2,7.5 L14,7.5 M2,10.5 L14,10.5" style="stroke: currentColor; stroke-linecap: round;" />
+            </SvgIcon>
+            <SvgIcon>
+                <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+            </SvgIcon>
+        </div>
     </p>
 </section>
