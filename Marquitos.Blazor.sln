@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4FB2811E-68E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{03B5F934-AD1E-486E-8CC2-2981A4D7C75B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.AspNetCore.Components", "src\Marquitos.AspNetCore.Components\Marquitos.AspNetCore.Components.csproj", "{2B899577-7210-49C3-BEF0-60422C5FF1B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marquitos.AspNetCore.Components", "src\Marquitos.AspNetCore.Components\Marquitos.AspNetCore.Components.csproj", "{2B899577-7210-49C3-BEF0-60422C5FF1B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{9107A75A-AD1B-437A-9F76-3C389C88BA8D}"
 EndProject
@@ -16,6 +16,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.Blazor.Client", "src\Marquitos.Blazor\Client\Marquitos.Blazor.Client.csproj", "{452F5224-C7F2-46EA-B552-554A4E32B0D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.Blazor.Shared", "src\Marquitos.Blazor\Shared\Marquitos.Blazor.Shared.csproj", "{0AF5FF04-784A-4455-BF51-9A097FF54E88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BE839E85-4359-42BC-81B8-6E102DE2F878}"
+	ProjectSection(SolutionItems) = preProject
+		tools\GenerateNugets.bat = tools\GenerateNugets.bat
+		tools\MarquitosPT.PublicKey = tools\MarquitosPT.PublicKey
+		tools\MarquitosPT.snk = tools\MarquitosPT.snk
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

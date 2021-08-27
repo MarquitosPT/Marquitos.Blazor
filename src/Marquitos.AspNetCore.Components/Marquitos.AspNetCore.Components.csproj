@@ -1,19 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net5.0</TargetFrameworks>
 		<Product>Blazor Components</Product>
+		<Description>ASP.NET Core Blazor Components</Description>
 		<Company>MarquitosPT</Company>
-		<Copyright>Copyright © 2021 - MarquitosPT</Copyright>
-		<Authors>Marcos Gomes</Authors>
-		<PackageProjectUrl>https://github.com/MarquitosPT/Marquitos.Blazor</PackageProjectUrl>
-		<PackageTags>aspnetcore blazor blazor-components</PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.0-alpha1</Version>
+		<!--  Visual Studio Command Line:   sn -k MarquitosPT.snk -->
+		<!--  Visual Studio Command Line:   sn -p MarquitosPT.snk MarquitosPT.PublicKey-->
+		<AssemblyOriginatorKeyFile>../../tools/MarquitosPT.snk</AssemblyOriginatorKeyFile>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+		<SignAssembly>true</SignAssembly>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+		<GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>Marquitos.AspNetCore.Components</PackageId>
+		<PackageTags>aspnetcore blazor blazor-components</PackageTags>
+		<PackageProjectUrl>https://github.com/MarquitosPT/Marquitos.AspNetCore.Components</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/MarquitosPT/Marquitos.AspNetCore.Components</RepositoryUrl>
+		<Authors>Marcos Gomes</Authors>
+		<Copyright>Copyright © 2021 - MarquitosPT</Copyright>
+		<Owners>MarquitosPT</Owners>
+		<Title>Blazor Components</Title>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Version>1.0.0-alpha2</Version>
 		<AssemblyVersion>1.0.0</AssemblyVersion>
 		<FileVersion>1.0.0.1</FileVersion>
 	</PropertyGroup>
@@ -22,8 +43,19 @@
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)'=='net6.0' ">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.6.21355.2" />
 	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)'=='net5.0' ">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+	</ItemGroup>
+
+	<!-- Workaround for this bug (https://github.com/dotnet/sdk/issues/18148) (replace the analyzer name with the one you need to exclude (filename only, no extension) -->
+    <Target Name="RemoveLoggingAnalyzer" AfterTargets="ResolveLockFileAnalyzers">
+        <ItemGroup>
+            <Analyzer Remove="@(Analyzer)" Condition="%(FileName) == 'Microsoft.Extensions.Logging.Generators'" />
+        </ItemGroup>
+    </Target>
 
 </Project>
