@@ -5,10 +5,11 @@
 </Breadcrumb>
 
 <h2>Welcome to Blazor Components</h2>
-<p>Blazor Components is a open source library.</p>
+<p>Blazor Components is an open source component library.</p>
+<p>Explore the source code on GitHub. Click <a href="https://github.com/MarquitosPT/Marquitos.Blazor" title="Marquitos.Blazor" target="_blank">here</a> to visit the project page.</p>
 
 <section>
-    <h3>Accordion Component</h3>
+    <h3>Accordion</h3>
     <p>
         The default behaviour will be one tab opened at time.
         <div class="bd-example">
@@ -32,6 +33,32 @@
                     </Body>
                 </AccordionItem>
             </Accordion>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Accordion&gt;
+    &lt;AccordionItem IsOpen=&quot;true&quot;&gt;
+        &lt;Header&gt;Item 1&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 1
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+    &lt;AccordionItem&gt;
+        &lt;Header&gt;Item 2&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 2
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+    &lt;AccordionItem&gt;
+        &lt;Header&gt;Item 3&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 3
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;
+                </pre>
+            </code>
         </div>
     </p>
     <p>
@@ -58,11 +85,37 @@
                 </AccordionItem>
             </Accordion>
         </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Accordion AllowMultiplePanelsOpen=&quot;true&quot;&gt;
+    &lt;AccordionItem IsOpen=&quot;true&quot;&gt;
+        &lt;Header&gt;Item 1&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 1
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+    &lt;AccordionItem&gt;
+        &lt;Header&gt;Item 2&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 2
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+    &lt;AccordionItem&gt;
+        &lt;Header&gt;Item 3&lt;/Header&gt;
+        &lt;Body&gt;
+            Content of item 3
+        &lt;/Body&gt;
+    &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;
+                </pre>
+            </code>
+        </div>
     </p>
 </section>
 
 <section>
-    <h3>Breadcrumb Component</h3>
+    <h3>Breadcrumb</h3>
     <p>
         <div class="bd-example">
             <Breadcrumb>
@@ -71,20 +124,40 @@
                 <BreadcrumbItem>Example</BreadcrumbItem>
             </Breadcrumb>
         </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Breadcrumb&gt;
+    &lt;BreadcrumbItem Uri=&quot;#&quot;&gt;Home&lt;/BreadcrumbItem&gt;
+    &lt;BreadcrumbItem Uri=&quot;#&quot;&gt;Breadcrumb&lt;/BreadcrumbItem&gt;
+    &lt;BreadcrumbItem&gt;Example&lt;/BreadcrumbItem&gt;
+&lt;/Breadcrumb&gt;
+                </pre>
+            </code>
+        </div>
     </p>
 </section>
 
 <section>
-    <h3>Card Component</h3>
+    <h3>Card</h3>
     <p>
         <div class="bd-example">
             <Card>
-                <CardHeader>
-                    Card Title
-                </CardHeader>
+                <CardHeader>Card Title</CardHeader>
                 <CardBody>Text</CardBody>
                 <CardFooter>Footer Text</CardFooter>
             </Card>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Card&gt;
+    &lt;CardHeader&gt;Card Title&lt;/CardHeader&gt;
+    &lt;CardBody&gt;Text&lt;/CardBody&gt;
+    &lt;CardFooter&gt;Footer Text&lt;/CardFooter&gt;
+&lt;/Card&gt;
+                </pre>
+            </code>
         </div>
     </p>
     <p>
@@ -96,7 +169,17 @@
                 <TabPage Title="Page 3">Content of page 3</TabPage>
             </CardTabSet>
         </div>
-        
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;CardTabSet&gt;
+    &lt;TabPage Title=&quot;Page 1&quot;&gt;Content of page 1&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 2&quot;&gt;Content of page 2&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 3&quot;&gt;Content of page 3&lt;/TabPage&gt;
+&lt;/CardTabSet&gt;
+                </pre>
+            </code>
+        </div>
     </p>
     <p>
         The CardTabSet component also works with pills.
@@ -107,34 +190,91 @@
                 <TabPage Title="Page 3">Content of page 3</TabPage>
             </CardTabSet>
         </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;CardTabSet Style=&quot;TabSetStyle.Pills&quot;&gt;
+    &lt;TabPage Title=&quot;Page 1&quot;&gt;Content of page 1&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 2&quot;&gt;Content of page 2&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 3&quot;&gt;Content of page 3&lt;/TabPage&gt;
+&lt;/CardTabSet&gt;
+                </pre>
+            </code>
+        </div>
     </p>
 </section>
 
 <section>
-    <h3>TabSet Component</h3>
+    <h3>NavigationView</h3>
     <p>
-        By default the TabSet component will render as tabs.
-        <div class="bd-example">
-            <TabSet>
-                <TabPage Title="Page 1">Content of page 1</TabPage>
-                <TabPage Title="Page 2">Content of page 2</TabPage>
-            </TabSet>
+        <div class="bd-example bd-h25">
+            <NavigationView @ref="NavigationViewExample">
+                <MenuItems>
+                    <NavigationViewItem @ref="HomeItemExample" Selected="true" OnClick="(e) => { NavigationViewExample.Activate(HomeItemExample); }">
+                        <Icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                            </svg>
+                        </Icon>
+                        <Content>Home</Content>
+                    </NavigationViewItem>
+                    <NavigationViewItem @ref="ProductsItemExample" OnClick="(e) => { NavigationViewExample.Activate(ProductsItemExample); }">
+                        <Icon>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-text-indent-left" viewBox="0 0 16 16">
+                                <path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </Icon>
+                        <Content>Products</Content>
+                    </NavigationViewItem>
+                </MenuItems>
+
+                <Frame>
+                    <div class="p-3">
+                        <h3>@NavigationViewExample.ActiveMenu?.Content</h3>
+                        <p>This is an example page.</p>
+                    </div>
+                </Frame>
+            </NavigationView>
         </div>
-    </p>    
-    <p>
-        The TabSet component also works with pills.
-        <div class="bd-example">
-            <TabSet Style="TabSetStyle.Pills">
-                <TabPage Title="Page 1">Content of page 1</TabPage>
-                <TabPage Title="Page 2">Content of page 2</TabPage>
-            </TabSet>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;NavigationView&gt;
+    &lt;MenuItems&gt;
+        &lt;NavigationViewItem Selected=&quot;true&quot; Uri=&quot;#&quot;&gt;
+            &lt;Icon&gt;
+                &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;currentColor&quot; class=&quot;bi bi-house&quot; viewBox=&quot;0 0 16 16&quot;&gt;
+                    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z&quot; /&gt;
+                    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z&quot; /&gt;
+                &lt;/svg&gt;
+            &lt;/Icon&gt;
+            &lt;Content&gt;Home&lt;/Content&gt;
+        &lt;/NavigationViewItem&gt;
+        &lt;NavigationViewItem Uri=&quot;#&quot;&gt;
+            &lt;Icon&gt;
+                &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;currentColor&quot; class=&quot;bi bi-text-indent-left&quot; viewBox=&quot;0 0 16 16&quot;&gt;
+                    &lt;path d=&quot;M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z&quot; /&gt;
+                &lt;/svg&gt;
+            &lt;/Icon&gt;
+            &lt;Content&gt;Products&lt;/Content&gt;
+        &lt;/NavigationViewItem&gt;
+    &lt;/MenuItems&gt;
+    &lt;Frame&gt;
+        &lt;div class=&quot;p-3&quot;&gt;
+            &lt;h3&gt;Home&lt;/h3&gt;
+            &lt;p&gt;This is an example page.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/Frame&gt;
+&lt;/NavigationView&gt;
+                </pre>
+            </code>
         </div>
     </p>
-    
 </section>
 
 <section>
-    <h3>SvgIcon Component</h3>
+    <h3>SvgIcon</h3>
     <p>
         <div class="bd-example">
             <SvgIcon>
@@ -145,5 +285,69 @@
                 <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
             </SvgIcon>
         </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;SvgIcon&gt;
+    &lt;path d=&quot;M2,4.5 L14,4.5 M2,7.5 L14,7.5 M2,10.5 L14,10.5&quot; style=&quot;stroke: currentColor; stroke-linecap: round;&quot; /&gt;
+&lt;/SvgIcon&gt;
+&lt;SvgIcon&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z&quot; /&gt;
+    &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z&quot; /&gt;
+&lt;/SvgIcon&gt;
+                </pre>
+            </code>
+        </div>
     </p>
 </section>
+
+<section>
+    <h3>TabSet</h3>
+    <p>
+        By default the TabSet component will render as tabs.
+        <div class="bd-example">
+            <TabSet>
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+            </TabSet>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;TabSet&gt;
+    &lt;TabPage Title=&quot;Page 1&quot;&gt;Content of page 1&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 2&quot;&gt;Content of page 2&lt;/TabPage&gt;
+&lt;/TabSet&gt;
+                </pre>
+            </code>
+        </div>
+    </p>    
+    <p>
+        The TabSet component also works with pills.
+        <div class="bd-example">
+            <TabSet Style="TabSetStyle.Pills">
+                <TabPage Title="Page 1">Content of page 1</TabPage>
+                <TabPage Title="Page 2">Content of page 2</TabPage>
+            </TabSet>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;TabSet Style=&quot;TabSetStyle.Pills&quot;&gt;
+    &lt;TabPage Title=&quot;Page 1&quot;&gt;Content of page 1&lt;/TabPage&gt;
+    &lt;TabPage Title=&quot;Page 2&quot;&gt;Content of page 2&lt;/TabPage&gt;
+&lt;/TabSet&gt;
+                </pre>
+            </code>
+        </div>
+    </p>
+    
+</section>
+
+@code{
+    public NavigationView NavigationViewExample { get; set; }
+
+    public NavigationViewItem HomeItemExample { get; set; }
+
+    public NavigationViewItem ProductsItemExample { get; set; }
+}

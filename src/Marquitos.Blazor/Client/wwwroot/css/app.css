@@ -72,9 +72,30 @@ a, .btn-link {
     border-width: 1px;
 }
 
+.bd-code {
+    position: relative;
+    padding: 1rem;
+    margin: -.50rem 0 .50rem 0;
+    border: solid #dee2e6;
+    border-width: 0 1px 1px 1px;
+    background-color: #f5f5f5;
+}
+
+.bd-code pre {
+    margin: 0;
+}
+
+.bd-h25 {
+    height: 25rem;
+}
+
 @media (min-width: 576px)
 {
     .bd-example {
+        padding: 1.5rem;
+    }
+
+    .bd-code {
         padding: 1.5rem;
     }
 }
