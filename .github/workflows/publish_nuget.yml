@@ -6,6 +6,7 @@ on:
 env:
   NUGET_PACKAGE_PUBLISH_PROFILE: ${{ secrets.NUGET_API_KEY }}
   CONFIGURATION: Release
+  DOTNET_CORE_VERSION_5: 5.0.*
   DOTNET_CORE_VERSION: 6.0.*
   WORKING_DIRECTORY: src/Marquitos.AspNetCore.Components/Marquitos.AspNetCore.Components.csproj
 jobs:
@@ -14,6 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION_5 }}
+          
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
