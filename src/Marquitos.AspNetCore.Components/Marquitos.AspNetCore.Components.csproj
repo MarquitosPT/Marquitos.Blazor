@@ -22,11 +22,11 @@
 	<PropertyGroup>
 		<PackageId>Marquitos.AspNetCore.Components</PackageId>
 		<PackageTags>aspnetcore blazor blazor-components</PackageTags>
-		<PackageProjectUrl>https://github.com/MarquitosPT/Marquitos.AspNetCore.Components</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/MarquitosPT/Marquitos.Blazor</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/MarquitosPT/Marquitos.AspNetCore.Components</RepositoryUrl>
+		<RepositoryUrl>https://github.com/MarquitosPT/Marquitos.Blazor</RepositoryUrl>
 		<Authors>Marcos Gomes</Authors>
 		<Copyright>Copyright © 2021 - MarquitosPT</Copyright>
 		<Owners>MarquitosPT</Owners>
