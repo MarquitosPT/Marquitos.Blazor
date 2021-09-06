@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Marquitos.AspNetCore.Components.Enums;
+using Marquitos.AspNetCore.Components.JSInterop;
 using Microsoft.AspNetCore.Components;
 
 namespace Marquitos.AspNetCore.Components.Web
@@ -9,6 +11,12 @@ namespace Marquitos.AspNetCore.Components.Web
     /// </summary>
     public partial class TabSet : Component, ITabSet, IDisposable
     {
+        private bool _playAnimation = false;
+        private ElementReference _frameElement;
+
+        [Inject]
+        private IJSAnimation JSAnimation { get; set; }
+
         [Parameter]
         public RenderFragment ChildContent { get; set; }
 
@@ -37,7 +45,13 @@ namespace Marquitos.AspNetCore.Components.Web
         {
             if (ActivePage != page)
             {
+                if (ActivePage != null && page != null)
+                {
+                    _playAnimation = true;
+                }
+
                 ActivePage = page;
+
                 StateHasChanged();
             }
         }
@@ -46,6 +60,22 @@ namespace Marquitos.AspNetCore.Components.Web
         {
             ActivePage = null;
             ChildContent = null;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSAnimation.InitializeAsync();
+            }
+            else
+            {
+                if (_playAnimation)
+                {
+                    _playAnimation = false;
+                    await JSAnimation.PlayAsync(AnimationType.FadeIn, _frameElement);
+                }
+            }
         }
     }
 }

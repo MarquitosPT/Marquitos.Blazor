@@ -22,5 +22,5 @@
             </CascadingValue>
         </ul>
     </div>
-    <div class="card-body" role="tabpanel">@ActivePage?.ChildContent</div>
+    <div class="card-body" role="tabpanel" @ref="_frameElement">@ActivePage?.ChildContent</div>
 </div>
