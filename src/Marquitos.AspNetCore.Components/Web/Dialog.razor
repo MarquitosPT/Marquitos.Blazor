@@ -1,0 +1,41 @@
+﻿@inherits Component
+@using Marquitos.AspNetCore.Components.Enums
+@{
+    var sizeCssClass = "";
+
+    switch (Size)
+    {
+        case DialogSize.Small:
+            sizeCssClass = "modal-sm";
+            break;
+        case DialogSize.Default:
+            sizeCssClass = "";    
+            break;
+        case DialogSize.Large:
+            sizeCssClass = "modal-lg";    
+            break;
+        case DialogSize.ExtraLarge:
+            sizeCssClass = "modal-xl";    
+            break;
+        default:
+            break;
+    }
+}
+@if (_state != Enums.DialogState.Closed)
+{
+    <div class="modal fade show" style="display:block" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" >
+        <div class="modal-dialog @sizeCssClass modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content shadow" @ref="_windowElement">
+                <div class="modal-header">
+                    <h5 class="modal-title">@DialogHeader</h5>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="HideAsync"></button>
+                </div>
+                <div class="modal-body">@DialogBody</div>
+                @if (@DialogFooter != null)
+                {
+                    <div class="modal-footer">@DialogFooter</div>
+                }
+            </div>
+        </div>
+    </div>
+}
