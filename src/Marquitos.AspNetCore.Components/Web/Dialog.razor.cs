@@ -10,7 +10,7 @@ namespace Marquitos.AspNetCore.Components.Web
     {
         private DialogState _state = DialogState.Closed;
         private ElementReference _windowElement;
-        private bool _showEvent = false;
+        private bool _triggerShowEvent = false;
 
         [Inject]
         private IJSAnimation JSAnimation { get; set; }
@@ -48,13 +48,13 @@ namespace Marquitos.AspNetCore.Components.Web
 
         public void Show()
         {
-            _showEvent = true;
+            _triggerShowEvent = true;
             State = DialogState.Openning;
         }
 
         public async Task ShowAsync()
         {
-            _showEvent = true;
+            _triggerShowEvent = true;
             State = DialogState.Openning;
             
             await Task.CompletedTask;
@@ -81,7 +81,7 @@ namespace Marquitos.AspNetCore.Components.Web
 
         protected async Task HandleOnShowAsync()
         {
-            _showEvent = false;
+            _triggerShowEvent = false;
 
             if (OnShow.HasDelegate)
             {
@@ -106,15 +106,13 @@ namespace Marquitos.AspNetCore.Components.Web
 
                         await Task.CompletedTask;
                     });
-
-                    if (_showEvent)
-                    {
-                        await HandleOnShowAsync();
-                    }
                 }
                 else if (_state == DialogState.Open)
                 {
-                    
+                    if (_triggerShowEvent)
+                    {
+                        await HandleOnShowAsync();
+                    }
                 }
                 else if (_state == DialogState.Closing)
                 {
