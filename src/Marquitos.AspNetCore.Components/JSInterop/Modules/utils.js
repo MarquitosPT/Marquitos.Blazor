@@ -17,6 +17,12 @@ export var Utils;
             windowResizeCallback = null;
         }
     };
+    Utils.click = function (element) {
+        element.click();
+    };
+    Utils.focus = function (element) {
+        element.focus();
+    };
     Utils.getWindowWidth = function () {
         return window.innerWidth;
     };

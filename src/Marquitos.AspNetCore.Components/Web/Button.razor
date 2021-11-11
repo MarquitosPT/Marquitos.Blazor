@@ -1,0 +1,64 @@
+﻿@inherits Component
+@using Marquitos.AspNetCore.Components.Enums
+@{
+    var cssClass = "btn";
+    var disabled = !Enabled;
+
+    switch (Style)
+    {
+        case ButtonStyle.Primary:
+            cssClass = "btn btn-primary";
+            break;
+        case ButtonStyle.OutlinePrimary:
+            cssClass = "btn btn-outline-primary";
+            break;
+        case ButtonStyle.Secondary:
+            cssClass = "btn btn-secundary";
+            break;
+        case ButtonStyle.OutlineSecondary:
+            cssClass = "btn btn-outline-secundary";
+            break;
+        case ButtonStyle.Success:
+            cssClass = "btn btn-success";
+            break;
+        case ButtonStyle.OutlineSuccess:
+            cssClass = "btn btn-outline-success";
+            break;
+        case ButtonStyle.Danger:
+            cssClass = "btn btn-danger";
+            break;
+        case ButtonStyle.OutlineDanger:
+            cssClass = "btn btn-outline-danger";
+            break;
+        case ButtonStyle.Warning:
+            cssClass = "btn btn-warning";
+            break;
+        case ButtonStyle.OutlineWarning:
+            cssClass = "btn btn-outline-warning";
+            break;
+        case ButtonStyle.Info:
+            cssClass = "btn btn-info";
+            break;
+        case ButtonStyle.OutlineInfo:
+            cssClass = "btn btn-outline-info";
+            break;
+        case ButtonStyle.Light:
+            cssClass = "btn btn-light";
+            break;
+        case ButtonStyle.OutlineLight:
+            cssClass = "btn btn-outline-light";
+            break;
+        case ButtonStyle.Dark:
+            cssClass = "btn btn-dark";
+            break;
+        case ButtonStyle.OutlineDark:
+            cssClass = "btn btn-outline-dark";
+            break;
+        case ButtonStyle.Link:
+            cssClass = "btn btn-link";
+            break;
+        default:
+            break;
+    }
+}
+<button @ref="_element" type="button" class="@cssClass" @onclick="OnClick" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" disabled="@disabled">@ChildContent</button>

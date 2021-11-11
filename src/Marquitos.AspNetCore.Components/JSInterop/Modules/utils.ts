@@ -31,6 +31,14 @@
         }
     }
 
+    export let click = function (element: HTMLElement): void {
+        element.click();
+    }
+
+    export let focus = function (element: HTMLElement): void {
+        element.focus();
+    }
+
     export let getWindowWidth = function (): number {
         return window.innerWidth;
     }

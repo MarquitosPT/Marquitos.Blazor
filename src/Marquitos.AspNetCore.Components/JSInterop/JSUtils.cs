@@ -46,6 +46,18 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             }
         }
 
+        public async ValueTask ClickAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.click", element);
+        }
+
+        public async ValueTask FocusAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.focus", element);
+        }
+
         public async ValueTask<int> GetWindowWidthAsync()
         {
             var module = await moduleTask.Value;
