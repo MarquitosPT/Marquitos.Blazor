@@ -4,7 +4,9 @@ Blazor Components library is composed by the following components.
 ## Components
 - Accordion
 - Breadcrumb
+- Button
 - Card
+- Dialog
 - [NavigationView](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/NavigationView)
 - SvgIcon
 - TabSet
