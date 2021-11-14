@@ -1,3 +1,5 @@
+[![NuGet Badge](https://buildstats.info/nuget/Marquitos.AspNetCore.Components)](https://www.nuget.org/packages/Marquitos.AspNetCore.Components/)
+
 # Marquitos.Blazor
 Blazor Components library is composed by the following components.
 
