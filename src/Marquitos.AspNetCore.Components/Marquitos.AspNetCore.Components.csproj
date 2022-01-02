@@ -40,6 +40,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="bundleconfig.json" />
+	  <Content Remove="tsconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="bundleconfig.json" />
+	  <None Include="tsconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
