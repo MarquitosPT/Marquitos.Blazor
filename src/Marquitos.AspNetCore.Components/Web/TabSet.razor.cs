@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Marquitos.AspNetCore.Components.Enums;
+﻿using Marquitos.AspNetCore.Components.Enums;
 using Marquitos.AspNetCore.Components.JSInterop;
 using Microsoft.AspNetCore.Components;
+using System;
+using System.Threading.Tasks;
 
 namespace Marquitos.AspNetCore.Components.Web
 {

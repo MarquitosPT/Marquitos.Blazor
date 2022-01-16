@@ -1,0 +1,14 @@
+﻿.mq-grid {
+    display: grid;
+    grid-template-columns: var(--mq-cols);
+    grid-template-rows: var(--mq-rows);
+    -moz-column-gap: var(--mq-cgap);
+    -ms-column-gap: var(--mq-cgap);
+    -webkit-column-gap: var(--mq-cgap);
+    column-gap: var(--mq-cgap);
+    row-gap: var(--mq-rgap);
+    --mq-cols: 1fr;
+    --mq-rows: 1fr;
+    --mq-rgap: 1;
+    --mq-cgap: 1;
+}

@@ -23,7 +23,7 @@ namespace Marquitos.AspNetCore.Components.Web
         private List<INavigationViewItem> _list = new List<INavigationViewItem>();
         private INavigationViewItem _backButton;
         private INavigationViewHeader headerFrame;
-        private int _windowWidth;         
+        private int _windowWidth;
 
         [Inject]
         private IJSAnimation JSAnimation { get; set; }
@@ -81,14 +81,14 @@ namespace Marquitos.AspNetCore.Components.Web
         [Parameter]
         public string BackButtonTitle { get; set; } = "Go back";
 
-        public INavigationViewHeader HeaderFrame 
-        { 
-            get => headerFrame; 
-            set 
-            { 
-                headerFrame = value; 
-                StateHasChanged(); 
-            }  
+        public INavigationViewHeader HeaderFrame
+        {
+            get => headerFrame;
+            set
+            {
+                headerFrame = value;
+                StateHasChanged();
+            }
         }
 
         public INavigationViewItem ActiveMenu { get; private set; }
@@ -165,7 +165,7 @@ namespace Marquitos.AspNetCore.Components.Web
                     {
                         await JSAnimation.GrowAsync(_panelElement, 0, 250);
                     }
-                    
+
                 }
                 else if (_state == NavigationViewState.Closing)
                 {
@@ -188,7 +188,7 @@ namespace Marquitos.AspNetCore.Components.Web
 
                             await Task.CompletedTask;
                         });
-                    }      
+                    }
                 }
 
                 if (_playNavigationAnimation)
@@ -248,7 +248,7 @@ namespace Marquitos.AspNetCore.Components.Web
             {
                 if (_displayMode != NavigationViewDisplayMode.LeftCompact)
                 {
-                    _displayMode = NavigationViewDisplayMode.LeftCompact; 
+                    _displayMode = NavigationViewDisplayMode.LeftCompact;
                     StateHasChanged();
                 }
             }

@@ -1,14 +1,31 @@
 ﻿@inherits Component
-<div class="container-fluid">
-    <div class="row">
-        <div class="col bg-light">1</div>
-        <div class="col bg-primary">1</div>
-    </div>
-    <div class="row">
-        <div class="col bg-primary">2</div>
-        <div class="col bg-light">2</div>
-    </div>
-</div>
-@code {
+@{
+    var rgap = $"{RowSpace}px";
+    var cgap = $"{ColSpace}px";
+    var cols = "1fr";
+    var rows = "1fr";
 
+    if (ColumnDefinitions?.Definitions.Count >0)
+    {
+        cols = "";
+        foreach (var item in ColumnDefinitions.Definitions)
+        {
+            cols += " " + item.Width;
+        }
+    }
+
+    if (RowDefinitions?.Definitions.Count > 0)
+    {
+        rows = "";
+        foreach (var item in RowDefinitions.Definitions)
+        {
+            rows += " " + item.Heigth;
+        }
+    }
 }
+<CascadingValue IsFixed="true" TValue="IGrid" Value="this">  
+    <div class="mq-grid" style="--mq-cols:@cols;--mq-rows:@rows;--mq-rgap:@rgap;--mq-cgap:@cgap;">
+        @ChildContent
+    </div>
+</CascadingValue>
+

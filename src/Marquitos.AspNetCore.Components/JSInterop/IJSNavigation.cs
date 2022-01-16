@@ -9,7 +9,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         ValueTask<bool> CanGoBackAsync();
 
         ValueTask BackAsync();
-        
+
         ValueTask ForwardAsync();
     }
 }

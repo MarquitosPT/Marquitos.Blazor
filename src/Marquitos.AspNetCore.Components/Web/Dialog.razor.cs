@@ -21,7 +21,7 @@ namespace Marquitos.AspNetCore.Components.Web
         public DialogState State
         {
             get { return _state; }
-            private set 
+            private set
             {
                 if (_state != value)
                 {
@@ -56,7 +56,7 @@ namespace Marquitos.AspNetCore.Components.Web
         {
             _triggerShowEvent = true;
             State = DialogState.Openning;
-            
+
             await Task.CompletedTask;
         }
 
@@ -99,7 +99,7 @@ namespace Marquitos.AspNetCore.Components.Web
             else
             {
                 if (_state == DialogState.Openning)
-                {       
+                {
                     await JSAnimation.PlayAsync(AnimationType.SlideInFromTop, _windowElement, async () =>
                     {
                         State = DialogState.Open;

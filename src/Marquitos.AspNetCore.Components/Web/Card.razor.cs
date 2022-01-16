@@ -28,8 +28,8 @@ namespace Marquitos.AspNetCore.Components.Web
 
         public void Dispose()
         {
-            CardHeader = null; 
-            CardBody = null; 
+            CardHeader = null;
+            CardBody = null;
             CardFooter = null;
         }
     }

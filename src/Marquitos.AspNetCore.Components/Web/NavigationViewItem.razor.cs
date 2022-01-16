@@ -49,7 +49,7 @@ namespace Marquitos.AspNetCore.Components.Web
                 {
                     _selected = NavigationView.ActiveMenu == this;
                 }
-                
+
                 return _selected;
             }
             set
@@ -59,19 +59,19 @@ namespace Marquitos.AspNetCore.Components.Web
         }
 
         [Parameter]
-        public bool Enabled 
-        { 
-            get => _enabled; 
-            set 
+        public bool Enabled
+        {
+            get => _enabled;
+            set
             {
                 if (_enabled != value)
                 {
                     _enabled = value;
                     StateHasChanged();
                 }
-            } 
+            }
         }
-        
+
         protected override void OnInitialized()
         {
             if (NavigationView != null)

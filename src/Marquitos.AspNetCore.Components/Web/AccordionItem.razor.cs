@@ -44,7 +44,7 @@ namespace Marquitos.AspNetCore.Components.Web
                 return _isOpen;
             }
 
-            set 
+            set
             {
 
                 if (_isOpen != value)
@@ -60,7 +60,7 @@ namespace Marquitos.AspNetCore.Components.Web
                         _state = AccordionItemState.Closed;
                     }
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Marquitos.AspNetCore.Components.Web
             else
             {
                 _state = AccordionItemState.Openning;
-                
+
                 StateHasChanged();
             }
 
