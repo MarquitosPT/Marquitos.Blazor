@@ -1,4 +1,5 @@
 ﻿.mq-gitem {
+    display: grid;
     -ms-grid-column: var(--mq-col) / span var(--mq-cspan);
     grid-column: var(--mq-col) / span var(--mq-cspan);
     -ms-grid-row: var(--mq-row) / span var(--mq-rspan);

@@ -205,6 +205,98 @@
 </section>
 
 <section>
+    <h3>Dialog</h3>
+    <p>
+        <div class="bd-example">
+            <Button OnClick="async () => { await SampleDialog.ShowAsync(); }">Show dialog</Button>
+
+            <Dialog @ref="SampleDialog" OnShow="async () => { await CloseButton.FocusAsync(); }">
+                <DialogHeader>Sample dialog</DialogHeader>
+                <DialogBody>...</DialogBody>
+                <DialogFooter>
+                    <Button @ref="CloseButton" OnClick="async () => { await SampleDialog.HideAsync(); }">Close</Button>
+                </DialogFooter>
+            </Dialog>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Dialog @@ref=&quot;SampleDialog&quot; OnShow=&quot;async () =&gt; { await CloseButton.FocusAsync(); }&quot;&gt;
+    &lt;DialogHeader&gt;Sample dialog&lt;/DialogHeader&gt;
+    &lt;DialogBody&gt;...&lt;/DialogBody&gt;
+    &lt;DialogFooter&gt;
+        &lt;Button @@ref=&quot;CloseButton&quot; OnClick=&quot;async () =&gt; { await SampleDialog.HideAsync(); }&quot;&gt;Close&lt;/Button&gt;
+    &lt;/DialogFooter&gt;
+&lt;/Dialog&gt;
+                </pre>
+            </code>
+        </div>
+    </p>
+</section>
+
+<section>
+    <h3>Grid</h3>
+    <p>
+        <div class="bd-example">
+            <Grid ColSpace="2" RowSpace="2">
+                <ColumnDefinitions>
+                    <ColumnDefinition Width="30%" />
+                    <ColumnDefinition Width="70%" />
+                </ColumnDefinitions>
+
+                <RowDefinitions>
+                    <RowDefinition Heigth="100px" />
+                    <RowDefinition Heigth="50px" />
+                </RowDefinitions>
+
+                <GridItem Col="1" Row="1">
+                    <div class="d-flex bg-warning">1</div>
+                </GridItem>
+                <GridItem Col="2" Row="1">
+                    <div class="bg-warning">2</div>
+                </GridItem>
+                <GridItem Col="1" Row="2">
+                    <div class="bg-warning">3</div>
+                </GridItem>
+                <GridItem Col="2" Row="2">
+                    <div class="bg-warning">4</div>
+                </GridItem>
+            </Grid>
+        </div>
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Grid ColSpace=&quot;2&quot; RowSpace=&quot;2&quot;&gt;
+    &lt;ColumnDefinitions&gt;
+        &lt;ColumnDefinition Width=&quot;30%&quot; /&gt;
+        &lt;ColumnDefinition Width=&quot;70%&quot; /&gt;
+    &lt;/ColumnDefinitions&gt;
+
+    &lt;RowDefinitions&gt;
+        &lt;RowDefinition Heigth=&quot;100px&quot; /&gt;
+        &lt;RowDefinition Heigth=&quot;50px&quot; /&gt;
+    &lt;/RowDefinitions&gt;
+
+    &lt;GridItem Col=&quot;1&quot; Row=&quot;1&quot;&gt;
+        &lt;div class=&quot;d-flex bg-warning&quot;&gt;1&lt;/div&gt;
+    &lt;/GridItem&gt;
+    &lt;GridItem Col=&quot;2&quot; Row=&quot;1&quot;&gt;
+        &lt;div class=&quot;bg-warning&quot;&gt;2&lt;/div&gt;
+    &lt;/GridItem&gt;
+    &lt;GridItem Col=&quot;1&quot; Row=&quot;2&quot;&gt;
+        &lt;div class=&quot;bg-warning&quot;&gt;3&lt;/div&gt;
+    &lt;/GridItem&gt;
+    &lt;GridItem Col=&quot;2&quot; Row=&quot;2&quot;&gt;
+        &lt;div class=&quot;bg-warning&quot;&gt;4&lt;/div&gt;
+    &lt;/GridItem&gt;
+&lt;/Grid&gt;
+                </pre>
+            </code>
+        </div>
+    </p>
+</section>
+
+<section>
     <h3>NavigationView</h3>
     <p>
         <div class="bd-example bd-h25">
@@ -321,7 +413,7 @@
                 </pre>
             </code>
         </div>
-    </p>    
+    </p>
     <p>
         The TabSet component also works with pills.
         <div class="bd-example">
@@ -341,13 +433,17 @@
             </code>
         </div>
     </p>
-    
+
 </section>
 
 @code{
-    public NavigationView NavigationViewExample { get; set; }
+        public NavigationView NavigationViewExample { get; set; }
 
-    public NavigationViewItem HomeItemExample { get; set; }
+        public NavigationViewItem HomeItemExample { get; set; }
 
-    public NavigationViewItem ProductsItemExample { get; set; }
+        public NavigationViewItem ProductsItemExample { get; set; }
+
+        public Button CloseButton { get; set; }
+
+        public Dialog SampleDialog { get; set; }
 }
