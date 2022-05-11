@@ -6,7 +6,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: blazor-marquitos
   AZURE_WEBAPP_PACKAGE_PATH: src\Marquitos.Blazor\Server/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.blazor_marquitos_0d0d }}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.teste }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.*
   WORKING_DIRECTORY: src\Marquitos.Blazor\Server
