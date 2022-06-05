@@ -15,8 +15,8 @@
         <svg x="50" y="50" height="@_chartAreaSize.Height" width="@_chartAreaSize.Width" viewBox="0 0 @_chartAreaSize.Width @_chartAreaSize.Height" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <pattern x="0" y="0" width="@xgrid" height="@ygrid" patternUnits="userSpaceOnUse" viewBox="0 0 @xgrid @ygrid" id="pattern-0">
-                    <line style="stroke-width: 0.5px; stroke: rgb(192, 192, 192); stroke-linecap: square;" x1="0" y1="0" x2="0" y2="@ygrid"></line>
-                    <line style="stroke-width: 0.5px; stroke: rgb(192, 192, 192); stroke-linecap: square;" x1="0" y1="0" x2="@xgrid" y2="0"></line>
+                    <line class="y-grid" x1="0" y1="0" x2="0" y2="@ygrid" />
+                    <line class="x-grid" x1="0" y1="0" x2="@xgrid" y2="0" />
                 </pattern>
             </defs>
 
@@ -62,16 +62,21 @@
             
             <g>
                 <text class="y-axis" x="42" y="@y1">@(i*gridlines)</text>
-                <line x1="46" y1="@y2" x2="50" y2="@y2" style="stroke-width: 1px; stroke: rgb(64, 64, 64);"></line>
+                <line class="axis-mark" x1="46" y1="@y2" x2="50" y2="@y2" />
             </g>
         }
 
         <!-- X-Axis -->
         @for(var i=1; ocurrences >= i; i++)
         {
-            var x1 = 50 + (xgrid * i) - (xgrid / 2);           
+            var x1 = 50 + (xgrid * i) - (xgrid / 2);
+            var x2 = 50 + (xgrid * i);
             <g>
                 <text class="x-axis" x="@x1" y="365">@i</text>
+                @if (ocurrences > i)
+                {
+                    <line class="axis-mark" x1="@x2" y1="350" x2="@x2" y2="354" />
+                }
             </g>
         }
 
@@ -88,7 +93,7 @@
                 }
                 else
                 {
-                    <rect class="legend serie-@(i+1)" x="600" y="@y1" width="15" height="15" style="fill: @System.Drawing.ColorTranslator.ToHtml(serie.Color)" />  
+                    <rect class="legend serie-@(i+1)" x="600" y="@y1" width="15" height="15" />  
                 }
                 <text class="x-axis" x="635" y="@y2">@serie.Name</text>
             </g>
