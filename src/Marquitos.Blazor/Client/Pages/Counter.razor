@@ -11,6 +11,13 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<Chart Title="My Column Chart">
+    <ChartSeries>
+        <ChartSerie Color="System.Drawing.Color.Red" />
+        <ChartSerie />
+    </ChartSeries>
+</Chart>
+
 @code {
     private int currentCount = 0;
 

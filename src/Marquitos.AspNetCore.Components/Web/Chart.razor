@@ -1,16 +1,99 @@
 ﻿@inherits Component
+@{
+    var ocurrences = 10;
+    var gridlines = 5;
+    var series = ChartSeries?.Series.Count;
+    var xgrid = _chartAreaSize.Width / (ocurrences);
+    var ygrid = _chartAreaSize.Height / gridlines;
+}
 <div>
-    <svg viewBox="0 0 100 100" height="300px" width="300px" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <pattern x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse" viewBox="0 0 100 100" id="pattern-0">
-                <line style="stroke: rgb(0, 0, 0); stroke-linecap: square;" x1="0" y1="0" x2="0" y2="100"></line>
-                <line style="stroke: rgb(0, 0, 0); stroke-linecap: square;" x1="0" y1="0" x2="100" y2="0"></line>
-            </pattern>
-        </defs>
+    <svg class="mq-chart" viewBox="0 0 800 400" height="400" width="800" xmlns="http://www.w3.org/2000/svg">    
+        <!-- Title -->
+        <text class="title" x="300" y="30">@Title</text>
 
-        <rect x="0" y="0" width="100" height="100" style="stroke: currentColor;fill: url(#pattern-0)"></rect>
+        <!-- Chart Area -->
+        <svg x="50" y="50" height="@_chartAreaSize.Height" width="@_chartAreaSize.Width" viewBox="0 0 @_chartAreaSize.Width @_chartAreaSize.Height" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern x="0" y="0" width="@xgrid" height="@ygrid" patternUnits="userSpaceOnUse" viewBox="0 0 @xgrid @ygrid" id="pattern-0">
+                    <line style="stroke-width: 0.5px; stroke: rgb(192, 192, 192); stroke-linecap: square;" x1="0" y1="0" x2="0" y2="@ygrid"></line>
+                    <line style="stroke-width: 0.5px; stroke: rgb(192, 192, 192); stroke-linecap: square;" x1="0" y1="0" x2="@xgrid" y2="0"></line>
+                </pattern>
+            </defs>
+
+            <!-- Grid -->
+            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="fill: url(#pattern-0)" />    
+            
+            <!-- Series Columns -->
+            @for(var i=1; ocurrences >= i; i++)
+            {
+                var xp = 4;
+                var x2 = (xgrid * (i - 1)) + xp;
+                var x3 = x2 + xgrid -(xp*2);
+
+                @for(var i2=1; i2<= series;i2++)
+                {
+                    var y1 = Random.Shared.NextInt64(0,_chartAreaSize.Height);
+
+                    var x4 = x2 + (((x3-x2) / series) * (i2-1));
+                    var x5 = x4 + ((x3-x2) / series);
+                    var serie = ChartSeries.Series.ElementAt(i2 - 1);
+
+                    @if (serie.Color != System.Drawing.Color.Empty)
+                    {
+                        <path class="serie" style="fill:@System.Drawing.ColorTranslator.ToHtml(serie.Color);d:path('M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z');" d="M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z" />
+                    }
+                    else
+                    {
+                        <path class="serie serie-@i2" style="d:path('M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z');" d="M @x4 300 H @x5 V 300 H @x4 V 300 Z" />
+                    }          
+                }
+            }
+
+            <!-- Grid Border -->
+            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="stroke-width: 2px; stroke: rgb(64, 64, 64);fill: none" />    
+            
+        </svg>
+
+        <!-- Y-Axis -->
+        @for(var i=1; gridlines > i; i++)
+        {
+            var y1 = 353 - (ygrid * i);   
+            var y2 = 350 - (ygrid * i); 
+            
+            <g>
+                <text class="y-axis" x="42" y="@y1">@(i*gridlines)</text>
+                <line x1="46" y1="@y2" x2="50" y2="@y2" style="stroke-width: 1px; stroke: rgb(64, 64, 64);"></line>
+            </g>
+        }
+
+        <!-- X-Axis -->
+        @for(var i=1; ocurrences >= i; i++)
+        {
+            var x1 = 50 + (xgrid * i) - (xgrid / 2);           
+            <g>
+                <text class="x-axis" x="@x1" y="365">@i</text>
+            </g>
+        }
+
+        <!-- Legend -->
+        @for (int i = 0; i < series; i++)
+        {
+            var y1 = 100 + (20 * i);
+            var y2 = y1 + 11;
+            var serie = ChartSeries.Series.ElementAt(i);
+            <g>
+                @if (serie.Color != System.Drawing.Color.Empty)
+                {
+                    <rect class="legend" x="600" y="@y1" width="15" height="15" style="fill: @System.Drawing.ColorTranslator.ToHtml(serie.Color)" />           
+                }
+                else
+                {
+                    <rect class="legend serie-@(i+1)" x="600" y="@y1" width="15" height="15" style="fill: @System.Drawing.ColorTranslator.ToHtml(serie.Color)" />  
+                }
+                <text class="x-axis" x="635" y="@y2">@serie.Name</text>
+            </g>
+        }
     </svg>
-
-    <div style="display:none"><CascadingValue TValue="IChart" Value="this">@ChildContent</CascadingValue></div>
+    <CascadingValue TValue="IChart" Value="this" IsFixed=true><div style="display:none">@ChildContent</div></CascadingValue>
 </div>
 
