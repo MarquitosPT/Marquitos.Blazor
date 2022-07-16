@@ -57,10 +57,53 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             }
         }
 
-        public async ValueTask GrowAsync(ElementReference element, int from, Func<Task> callback = null)
+        public async ValueTask FadeInAsync(ElementReference element, Func<Task> callback = null)
+        {
+            await FadeInAsync(element, 250, callback);
+        }
+
+        public async ValueTask FadeInAsync(ElementReference element, int duration, Func<Task> callback = null)
         {
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("Animation.grow", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), from);
+            await module.InvokeVoidAsync("Animation.fadeIn", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), duration);
+        }
+
+        public async ValueTask FadeOutAsync(ElementReference element, Func<Task> callback = null)
+        {
+            await FadeOutAsync(element, 150, callback);
+        }
+
+        public async ValueTask FadeOutAsync(ElementReference element, int duration, Func<Task> callback = null)
+        { 
+            var module = await moduleTask.Value; 
+            await module.InvokeVoidAsync("Animation.fadeOut", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), duration);
+        }
+
+        public async ValueTask ExpandAsync(ElementReference element, int from, Func<Task> callback = null)
+        {
+            await ExpandAsync(element, from, 300, callback);
+        }
+
+        public async ValueTask ExpandAsync(ElementReference element, int from, int duration, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.expand", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), from, duration);
+        }
+
+        public async ValueTask CollapseAsync(ElementReference element, int to, Func<Task> callback = null)
+        {
+            await CollapseAsync(element, to, 300, callback);
+        }
+
+        public async ValueTask CollapseAsync(ElementReference element, int to, int duration, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.collapse", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), to, duration);
+        }
+
+        public async ValueTask GrowAsync(ElementReference element, int from, Func<Task> callback = null)
+        {
+            await GrowAsync(element, from, 300, callback);
         }
 
         public async ValueTask GrowAsync(ElementReference element, int from, int duration, Func<Task> callback = null)
@@ -69,16 +112,9 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             await module.InvokeVoidAsync("Animation.grow", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), from, duration);
         }
 
-        public async ValueTask GrowAndExpandAsync(ElementReference element, int fromWidth, int fromHeight, Func<Task> callback = null)
-        {
-            var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("Animation.growAndExpand", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), fromWidth, fromHeight);
-        }
-
         public async ValueTask CompactAsync(ElementReference element, int to, Func<Task> callback = null)
         {
-            var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("Animation.compact", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), to);
+            await CompactAsync(element, to, 300, callback);
         }
 
         public async ValueTask CompactAsync(ElementReference element, int to, int duration, Func<Task> callback = null)
@@ -87,10 +123,26 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             await module.InvokeVoidAsync("Animation.compact", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), to, duration);
         }
 
-        public async ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, Func<Task> callback = null)
+        public async ValueTask GrowAndExpandAsync(ElementReference element, int fromWidth, int fromHeight, Func<Task> callback = null)
+        {
+            await GrowAndExpandAsync(element, fromWidth, fromHeight, 300, callback);
+        }
+
+        public async ValueTask GrowAndExpandAsync(ElementReference element, int fromWidth, int fromHeight, int duration, Func<Task> callback = null)
         {
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("Animation.compactAndCollapse", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), toWidth, toHeight);
+            await module.InvokeVoidAsync("Animation.growAndExpand", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), fromWidth, fromHeight, duration);
+        }
+
+        public async ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, Func<Task> callback = null)
+        {
+            await CompactAndCollapseAsync(element, toWidth, toHeight, 300, callback);
+        }
+
+        public async ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, int duration, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.compactAndCollapse", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), toWidth, toHeight, duration);
         }
 
         public async ValueTask DisposeAsync()
