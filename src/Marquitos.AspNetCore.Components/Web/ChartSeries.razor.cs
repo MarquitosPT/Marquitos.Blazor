@@ -14,8 +14,15 @@ namespace Marquitos.AspNetCore.Components.Web
             Series = new List<ChartSerie>();
         }
 
-        public ChartSeries(IEnumerable<ChartSerie> series)
+        public ChartSeries(IChart chart)
         {
+            Chart = chart;
+            Series = new List<ChartSerie>();
+        }
+
+        public ChartSeries(IChart chart, IEnumerable<ChartSerie> series)
+        {
+            Chart = chart;
             Series = new List<ChartSerie>(series);
         }
 
@@ -24,6 +31,9 @@ namespace Marquitos.AspNetCore.Components.Web
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
+
+        [Parameter]
+        public string FieldName { get; set; }
 
         public ICollection<ChartSerie> Series { get; private set; }
 

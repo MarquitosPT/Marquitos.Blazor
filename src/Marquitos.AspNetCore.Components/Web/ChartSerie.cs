@@ -15,6 +15,9 @@ namespace Marquitos.AspNetCore.Components.Web
         [Parameter]
         public string Name { get; set; }
 
+        [Parameter]
+        public string FieldName { get; set; }
+
         protected override void OnInitialized()
         {
             if (ChartSeries == null)
