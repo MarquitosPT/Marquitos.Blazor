@@ -5,8 +5,24 @@
     var gridlines = 10;
     var series = ChartSeries?.Series.Count;
     var xgrid = ocurrences == 0 ? _chartAreaSize.Width : _chartAreaSize.Width / (ocurrences);
-    var ygrid = _chartAreaSize.Height / gridlines;
+    var ygrid = _chartAreaSize.Height / (gridlines);
     var maxValue = GetMaxValue();
+
+    int m1 = (int)(maxValue / 9);
+
+    if (maxValue % 9 != 0)
+    {
+        m1 += 1;
+    }
+
+    m1 = (m1 * 9);
+
+    maxValue = m1;
+
+
+    // maxValue = (maxValue / gridlines) * (gridlines + 1);
+
+    //maxValue = maxValue - (maxValue % (gridlines));
 }
 <div>
     <CascadingValue TValue="IChart<T>" Value="this" IsFixed=true><div style="display:none">@ChildContent</div></CascadingValue>
@@ -29,7 +45,7 @@
             <!-- Series Columns -->
             @if (ocurrences > 0 && series > 0)
             {               
-                var convertion = maxValue == 0 ? 0 : _chartAreaSize.Height / maxValue;
+                var convertion = maxValue == 0 ? 0 : (_chartAreaSize.Height - (_chartAreaSize.Height / gridlines)) / maxValue;
 
                 @for(var i=1; ocurrences >= i; i++)
                 {
@@ -74,7 +90,7 @@
                 var y2 = 350 - (ygrid * i); 
             
                 <g>
-                    <text class="y-axis" x="42" y="@y1">@(i*(maxValue / gridlines))</text>
+                    <text class="y-axis" x="42" y="@y1">@(Math.Round(i*(maxValue / (gridlines - 1)), 2))</text>
                     <line class="axis-mark" x1="46" y1="@y2" x2="50" y2="@y2" />
                 </g>
             }
