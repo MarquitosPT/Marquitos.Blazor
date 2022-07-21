@@ -8,7 +8,9 @@ Blazor Components library is composed by the following components.
 - Breadcrumb
 - Button
 - Card
+- Chart
 - Dialog
+- Grid
 - [NavigationView](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/NavigationView)
 - SvgIcon
 - TabSet
