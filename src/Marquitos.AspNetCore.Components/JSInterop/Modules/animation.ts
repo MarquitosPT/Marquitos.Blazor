@@ -19,7 +19,7 @@
         }
     }
 
-    export let fadeIn = function (element: HTMLElement, obj): void {
+    export let fadeIn = function (element: HTMLElement, obj, duration: number = 250): void {
         var keyFrames: Keyframe[] = [
             {
                 opacity: 0
@@ -28,10 +28,10 @@
                 opacity: 1
             }];
 
-        play(keyFrames, element, obj, 250);
+        play(keyFrames, element, obj, duration);
     }
 
-    export let fadeOut = function (element: HTMLElement, obj): void {
+    export let fadeOut = function (element: HTMLElement, obj, duration: number = 150): void {
         var keyFrames: Keyframe[] = [
             {
                 opacity: 1
@@ -40,13 +40,18 @@
                 opacity: 0
             }];
 
-        play(keyFrames, element, obj, 150);
+        play(keyFrames, element, obj, duration);
     }
 
-    export let slideInFromTop = function (element: HTMLElement, obj): void {
+    export let slideInFromTop = function (element: HTMLElement, obj, distance: number = 50, duration: number = 300): void {
+        
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
+
         var keyFrames: Keyframe[] = [
             {
-                transform: "translate(0, -50px)",
+                transform: "translate(0, -" + distance + "px)",
                 opacity: 0.5
             },
             {
@@ -55,15 +60,20 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     }
 
-    export let slideInFromBottom = function (element: HTMLElement, obj): void {
+    export let slideInFromBottom = function (element: HTMLElement, obj, distance: number = 50, duration: number = 300): void {
+
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
+
         var keyFrames: Keyframe[] = [
             {
-                transform: "translate(0, 50px)",
+                transform: "translate(0, " + distance + "px)",
                 opacity: 0.5
             },
             {
@@ -72,15 +82,20 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     }
 
-    export let slideInFromLeft = function (element: HTMLElement, obj): void {
+    export let slideInFromLeft = function (element: HTMLElement, obj, distance: number = 50, duration: number = 300): void {
+
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
+
         var keyFrames: Keyframe[] = [
             {
-                transform: "translate(-50px, 0)",
+                transform: "translate(-" + distance + "px, 0)",
                 opacity: 0.5
             },
             {
@@ -89,15 +104,20 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     }
 
-    export let slideInFromRight = function (element: HTMLElement, obj): void {
+    export let slideInFromRight = function (element: HTMLElement, obj, distance: number = 50, duration: number = 300): void {
+
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
+
         var keyFrames: Keyframe[] = [
             {
-                transform: "translate(50px, 0)",
+                transform: "translate(" + distance + "px, 0)",
                 opacity: 0.5
             },
             {
@@ -106,83 +126,103 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     }
 
-    export let slideOutToTop = function (element: HTMLElement, obj): void {
+    export let slideOutToTop = function (element: HTMLElement, obj, distance: number = 50, duration: number = 200): void {
+
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
+
         var keyFrames: Keyframe[] = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(0, -50px)",
+                transform: "translate(0, -" + distance + "px)",
                 opacity: 0
             }];
 
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     }
 
-    export let slideOutToBottom = function (element: HTMLElement, obj): void {
+    export let slideOutToBottom = function (element: HTMLElement, obj, distance: number = 50, duration: number = 200): void {
+
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
+
         var keyFrames: Keyframe[] = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(0, 50px)",
+                transform: "translate(0, " + distance + "px)",
                 opacity: 0
             }];
 
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     }
 
-    export let slideOutToLeft = function (element: HTMLElement, obj): void {
+    export let slideOutToLeft = function (element: HTMLElement, obj, distance: number = 50, duration: number = 200): void {
+
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
+
         var keyFrames: Keyframe[] = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(-50px, 0)",
+                transform: "translate(-" + distance + "px, 0)",
                 opacity: 0
             }];
 
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     }
 
-    export let slideOutToRight = function (element: HTMLElement, obj): void {
+    export let slideOutToRight = function (element: HTMLElement, obj, distance: number = 50, duration: number = 200): void {
+
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
+
         var keyFrames: Keyframe[] = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(50px, 0)",
+                transform: "translate(" + distance + "px, 0)",
                 opacity: 0
             }];
 
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     }
 
-    export let expand = function (element: HTMLElement, obj): void {
+    export let expand = function (element: HTMLElement, obj, from: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
-                height: '0',
+                height: from + 'px',
                 overflow: 'hidden'
             },
             {
@@ -191,24 +231,24 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });       
     }
 
-    export let collapse = function (element: HTMLElement, obj): void {
+    export let collapse = function (element: HTMLElement, obj, to: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
                 height: element.clientHeight+'px',
                 overflow: 'hidden'
             },
             {
-                height: '0',
+                height: to + 'px',
                 overflow: 'hidden'
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     }
@@ -247,7 +287,7 @@
         });
     }
 
-    export let growAndExpand = function (element: HTMLElement, obj, fromWidth: number = 0, fromHeight: number = 0): void {
+    export let growAndExpand = function (element: HTMLElement, obj, fromWidth: number = 0, fromHeight: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
                 width: fromWidth + 'px',
@@ -261,12 +301,12 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     }
 
-    export let compactAndCollapse = function (element: HTMLElement, obj, toWidth: number = 0, toHeight: number = 0): void {
+    export let compactAndCollapse = function (element: HTMLElement, obj, toWidth: number = 0, toHeight: number = 0, duration: number = 300): void {
         var keyFrames: Keyframe[] = [
             {
                 width: element.clientWidth + 'px',
@@ -280,7 +320,7 @@
             }];
 
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     }

@@ -14,7 +14,7 @@ export var Animation;
             console.error(e);
         }
     };
-    Animation.fadeIn = function (element, obj) {
+    Animation.fadeIn = function (element, obj, duration = 250) {
         var keyFrames = [
             {
                 opacity: 0
@@ -23,9 +23,9 @@ export var Animation;
                 opacity: 1
             }
         ];
-        play(keyFrames, element, obj, 250);
+        play(keyFrames, element, obj, duration);
     };
-    Animation.fadeOut = function (element, obj) {
+    Animation.fadeOut = function (element, obj, duration = 150) {
         var keyFrames = [
             {
                 opacity: 1
@@ -34,12 +34,15 @@ export var Animation;
                 opacity: 0
             }
         ];
-        play(keyFrames, element, obj, 150);
+        play(keyFrames, element, obj, duration);
     };
-    Animation.slideInFromTop = function (element, obj) {
+    Animation.slideInFromTop = function (element, obj, distance = 50, duration = 300) {
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
         var keyFrames = [
             {
-                transform: "translate(0, -50px)",
+                transform: "translate(0, -" + distance + "px)",
                 opacity: 0.5
             },
             {
@@ -48,14 +51,17 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     };
-    Animation.slideInFromBottom = function (element, obj) {
+    Animation.slideInFromBottom = function (element, obj, distance = 50, duration = 300) {
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
         var keyFrames = [
             {
-                transform: "translate(0, 50px)",
+                transform: "translate(0, " + distance + "px)",
                 opacity: 0.5
             },
             {
@@ -64,14 +70,17 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     };
-    Animation.slideInFromLeft = function (element, obj) {
+    Animation.slideInFromLeft = function (element, obj, distance = 50, duration = 300) {
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
         var keyFrames = [
             {
-                transform: "translate(-50px, 0)",
+                transform: "translate(-" + distance + "px, 0)",
                 opacity: 0.5
             },
             {
@@ -80,14 +89,17 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     };
-    Animation.slideInFromRight = function (element, obj) {
+    Animation.slideInFromRight = function (element, obj, distance = 50, duration = 300) {
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
         var keyFrames = [
             {
-                transform: "translate(50px, 0)",
+                transform: "translate(" + distance + "px, 0)",
                 opacity: 0.5
             },
             {
@@ -96,78 +108,90 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease-out'
         });
     };
-    Animation.slideOutToTop = function (element, obj) {
+    Animation.slideOutToTop = function (element, obj, distance = 50, duration = 200) {
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
         var keyFrames = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(0, -50px)",
+                transform: "translate(0, -" + distance + "px)",
                 opacity: 0
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     };
-    Animation.slideOutToBottom = function (element, obj) {
+    Animation.slideOutToBottom = function (element, obj, distance = 50, duration = 200) {
+        if (distance == 0) {
+            distance = element.clientHeight;
+        }
         var keyFrames = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(0, 50px)",
+                transform: "translate(0, " + distance + "px)",
                 opacity: 0
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     };
-    Animation.slideOutToLeft = function (element, obj) {
+    Animation.slideOutToLeft = function (element, obj, distance = 50, duration = 200) {
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
         var keyFrames = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(-50px, 0)",
+                transform: "translate(-" + distance + "px, 0)",
                 opacity: 0
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     };
-    Animation.slideOutToRight = function (element, obj) {
+    Animation.slideOutToRight = function (element, obj, distance = 50, duration = 200) {
+        if (distance == 0) {
+            distance = element.clientWidth;
+        }
         var keyFrames = [
             {
                 transform: "none",
                 opacity: 1
             },
             {
-                transform: "translate(50px, 0)",
+                transform: "translate(" + distance + "px, 0)",
                 opacity: 0
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 200,
+            duration: duration,
             easing: 'ease-in'
         });
     };
-    Animation.expand = function (element, obj) {
+    Animation.expand = function (element, obj, from = 0, duration = 300) {
         var keyFrames = [
             {
-                height: '0',
+                height: from + 'px',
                 overflow: 'hidden'
             },
             {
@@ -176,23 +200,23 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     };
-    Animation.collapse = function (element, obj) {
+    Animation.collapse = function (element, obj, to = 0, duration = 300) {
         var keyFrames = [
             {
                 height: element.clientHeight + 'px',
                 overflow: 'hidden'
             },
             {
-                height: '0',
+                height: to + 'px',
                 overflow: 'hidden'
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     };
@@ -228,7 +252,7 @@ export var Animation;
             easing: 'ease-out'
         });
     };
-    Animation.growAndExpand = function (element, obj, fromWidth = 0, fromHeight = 0) {
+    Animation.growAndExpand = function (element, obj, fromWidth = 0, fromHeight = 0, duration = 300) {
         var keyFrames = [
             {
                 width: fromWidth + 'px',
@@ -242,11 +266,11 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     };
-    Animation.compactAndCollapse = function (element, obj, toWidth = 0, toHeight = 0) {
+    Animation.compactAndCollapse = function (element, obj, toWidth = 0, toHeight = 0, duration = 300) {
         var keyFrames = [
             {
                 width: element.clientWidth + 'px',
@@ -260,7 +284,7 @@ export var Animation;
             }
         ];
         play(keyFrames, element, obj, {
-            duration: 300,
+            duration: duration,
             easing: 'ease'
         });
     };
