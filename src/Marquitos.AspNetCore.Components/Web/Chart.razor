@@ -19,7 +19,6 @@
     maxValue = m1;
 }
 <div>
-    <CascadingValue TValue="IChart<T>" Value="this" IsFixed=true><div style="display:none">@ChildContent</div></CascadingValue>
     <svg class="mq-chart" viewBox="0 0 700 400" height="400" width="700" xmlns="http://www.w3.org/2000/svg">    
         <!-- Title -->
         <text class="title" x="300" y="30">@Title</text>
@@ -124,5 +123,6 @@
             }
         }
     </svg>
+    <CascadingValue TValue="IChart<T>" Value="this" IsFixed=true><div style="display:none">@ChildContent</div></CascadingValue>
 </div>
 
