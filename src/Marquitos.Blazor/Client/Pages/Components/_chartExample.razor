@@ -8,16 +8,34 @@
             </ChartSeries>
         </Chart>
     </div>
-    <div class="bd-code">
+        <div class="bd-code">
+            <code>
+                <pre>
+&lt;Chart Title="Column Chart Example" Data="data"&gt;
+    &lt;ChartSeries FieldName="Item1"&gt;
+        &lt;ChartSerie Name="Sales Income" FieldName="Item2"&gt;&lt;/ChartSerie&gt;
+        &lt;ChartSerie Name="Net Income" FieldName="Item3"&gt;&lt;/ChartSerie&gt;
+    &lt;/ChartSeries&gt;
+&lt;/Chart&gt;
 
-    </div>
+@@code {
+    private List&lt;Tuple&lt;string, decimal, decimal&gt;&gt; data = new List&lt;Tuple&lt;string, decimal, decimal&gt;&gt;()
+    {
+        Tuple.Create&lt;string, decimal, decimal&gt;("2019", 10, 50),
+        Tuple.Create&lt;string, decimal, decimal&gt;("2020", 20, 30),
+        Tuple.Create&lt;string, decimal, decimal&gt;("2021", 40, 60)
+    };
+}
+</pre>
+            </code>
+        </div>
 </p>
 
 @code {
     private List<Tuple<string, decimal, decimal>> data = new List<Tuple<string, decimal, decimal>>()
     {
-        Tuple.Create<string, decimal, decimal>("2019", 10,50),
-        Tuple.Create<string, decimal, decimal>("2020", 20, Random.Shared.Next(1, 100)),
-        Tuple.Create<string, decimal, decimal>("2021", Random.Shared.Next(1, 100),50)
+        Tuple.Create<string, decimal, decimal>("2019", 10, 50),
+        Tuple.Create<string, decimal, decimal>("2020", 20, 30),
+        Tuple.Create<string, decimal, decimal>("2021", 40, 60)
     };
 }

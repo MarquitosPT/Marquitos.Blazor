@@ -80,3 +80,9 @@
         stroke-width: 0.5px;
         stroke: rgb(64, 64, 64);
     }
+
+    .mq-chart .legend-text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        text-anchor: start
+    }

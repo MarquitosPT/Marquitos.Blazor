@@ -16,17 +16,11 @@
     }
 
     m1 = (m1 * 9);
-
     maxValue = m1;
-
-
-    // maxValue = (maxValue / gridlines) * (gridlines + 1);
-
-    //maxValue = maxValue - (maxValue % (gridlines));
 }
 <div>
     <CascadingValue TValue="IChart<T>" Value="this" IsFixed=true><div style="display:none">@ChildContent</div></CascadingValue>
-    <svg class="mq-chart" viewBox="0 0 800 400" height="400" width="800" xmlns="http://www.w3.org/2000/svg">    
+    <svg class="mq-chart" viewBox="0 0 700 400" height="400" width="700" xmlns="http://www.w3.org/2000/svg">    
         <!-- Title -->
         <text class="title" x="300" y="30">@Title</text>
 
@@ -119,13 +113,13 @@
                 <g>
                     @if (serie.Color != System.Drawing.Color.Empty)
                     {
-                        <rect class="legend" x="600" y="@y1" width="15" height="15" style="fill: @System.Drawing.ColorTranslator.ToHtml(serie.Color)" />           
+                        <rect class="legend" x="580" y="@y1" width="15" height="15" style="fill: @System.Drawing.ColorTranslator.ToHtml(serie.Color)" />           
                     }
                     else
                     {
-                        <rect class="legend serie-@(i+1)" x="600" y="@y1" width="15" height="15" />  
+                        <rect class="legend serie-@(i+1)" x="580" y="@y1" width="15" height="15" />  
                     }
-                    <text class="x-axis" x="635" y="@y2">@serie.Name</text>
+                    <text class="legend-text" x="600" y="@y2">@serie.Name</text>
                 </g>
             }
         }
