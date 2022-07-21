@@ -2,9 +2,9 @@
 <p>
     <div class="bd-example">
         <Chart Title="Column Chart Example" Data="data">
-            <ChartSeries FieldName="Item1">
-                <ChartSerie Name="Sales Income" FieldName="Item2"></ChartSerie>
-                <ChartSerie Name="Net Income" FieldName="Item3"></ChartSerie>
+            <ChartSeries FieldName="Year">
+                <ChartSerie Name="Sales Income" FieldName="SalesIncome"></ChartSerie>
+                <ChartSerie Name="Net Income" FieldName="NetIncome"></ChartSerie>
             </ChartSeries>
         </Chart>
     </div>
@@ -12,19 +12,26 @@
             <code>
                 <pre>
 &lt;Chart Title="Column Chart Example" Data="data"&gt;
-    &lt;ChartSeries FieldName="Item1"&gt;
-        &lt;ChartSerie Name="Sales Income" FieldName="Item2"&gt;&lt;/ChartSerie&gt;
-        &lt;ChartSerie Name="Net Income" FieldName="Item3"&gt;&lt;/ChartSerie&gt;
+    &lt;ChartSeries FieldName="Year"&gt;
+        &lt;ChartSerie Name="Sales Income" FieldName="SalesIncome"&gt;&lt;/ChartSerie&gt;
+        &lt;ChartSerie Name="Net Income" FieldName="NetIncome"&gt;&lt;/ChartSerie&gt;
     &lt;/ChartSeries&gt;
 &lt;/Chart&gt;
 
 @@code {
-    private List&lt;Tuple&lt;string, decimal, decimal&gt;&gt; data = new List&lt;Tuple&lt;string, decimal, decimal&gt;&gt;()
+    private ICollection&lt;ExampleData&gt; data = new List&lt;ExampleData&gt;()
     {
-        Tuple.Create&lt;string, decimal, decimal&gt;("2019", 10, 50),
-        Tuple.Create&lt;string, decimal, decimal&gt;("2020", 20, 30),
-        Tuple.Create&lt;string, decimal, decimal&gt;("2021", 40, 60)
+        new ExampleData { Year = "2019", SalesIncome = 10, NetIncome = 50 },
+        new ExampleData { Year = "2020", SalesIncome = 20, NetIncome = 30 },
+        new ExampleData { Year = "2021", SalesIncome = 40, NetIncome = 60 }
     };
+
+    public class ExampleData
+    {
+        public string Year { get; set; }
+        public decimal SalesIncome { get; set; }
+        public decimal NetIncome { get; set; }
+    }
 }
 </pre>
             </code>
@@ -32,10 +39,17 @@
 </p>
 
 @code {
-    private List<Tuple<string, decimal, decimal>> data = new List<Tuple<string, decimal, decimal>>()
+    private ICollection<ExampleData> data = new List<ExampleData>()
     {
-        Tuple.Create<string, decimal, decimal>("2019", 10, 50),
-        Tuple.Create<string, decimal, decimal>("2020", 20, 30),
-        Tuple.Create<string, decimal, decimal>("2021", 40, 60)
+        new ExampleData { Year = "2019", SalesIncome = 10, NetIncome = 50 },
+        new ExampleData { Year = "2020", SalesIncome = 20, NetIncome = 30 },
+        new ExampleData { Year = "2021", SalesIncome = 40, NetIncome = 60 }
     };
+
+    public class ExampleData
+    {
+        public string Year { get; set; }
+        public decimal SalesIncome { get; set; }
+        public decimal NetIncome { get; set; }
+    }
 }
