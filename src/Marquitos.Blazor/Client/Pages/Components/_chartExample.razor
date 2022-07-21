@@ -1,0 +1,23 @@
+﻿<h3>Chart</h3>
+<p>
+    <div class="bd-example">
+        <Chart Title="Column Chart Example" Data="data">
+            <ChartSeries FieldName="Item1">
+                <ChartSerie Name="Sales Income" FieldName="Item2"></ChartSerie>
+                <ChartSerie Name="Net Income" FieldName="Item3"></ChartSerie>
+            </ChartSeries>
+        </Chart>
+    </div>
+    <div class="bd-code">
+
+    </div>
+</p>
+
+@code {
+    private List<Tuple<string, decimal, decimal>> data = new List<Tuple<string, decimal, decimal>>()
+    {
+        Tuple.Create<string, decimal, decimal>("2019", 10,50),
+        Tuple.Create<string, decimal, decimal>("2020", 20, Random.Shared.Next(1, 100)),
+        Tuple.Create<string, decimal, decimal>("2021", Random.Shared.Next(1, 100),50)
+    };
+}

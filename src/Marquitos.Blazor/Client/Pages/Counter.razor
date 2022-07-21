@@ -11,13 +11,6 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-<Chart Title="My Column Chart" Data="data">
-    <ChartSeries FieldName="Item1">
-        <ChartSerie FieldName="Item2"></ChartSerie>
-        <ChartSerie FieldName="Item3"></ChartSerie>
-    </ChartSeries>
-</Chart>
-
 @code {
     private int currentCount = 0;
 
@@ -25,11 +18,4 @@
     {
         currentCount++;
     }
-
-    private List<Tuple<string, decimal, decimal>> data = new List<Tuple<string, decimal, decimal>>()
-    {
-        Tuple.Create<string, decimal, decimal>("2019", 10,50),
-        Tuple.Create<string, decimal, decimal>("2020", 20, Random.Shared.Next(1, 100)),
-        Tuple.Create<string, decimal, decimal>("2021", Random.Shared.Next(1, 100),50)
-    }; 
 }
