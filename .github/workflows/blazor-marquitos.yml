@@ -6,9 +6,9 @@ on:
 env:
   AZURE_WEBAPP_NAME: blazor-marquitos
   AZURE_WEBAPP_PACKAGE_PATH: src\Marquitos.Blazor\Server/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.BLAZOR_MARQUITOS_0D0D }}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.blazor_marquitos_374d }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.*
+  DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: src\Marquitos.Blazor\Server
 jobs:
   build-and-deploy:
@@ -19,7 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-        include-prerelease: true
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
