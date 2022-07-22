@@ -33,45 +33,53 @@
             </defs>
 
             <!-- Grid -->
-            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="fill: url(#pattern-0)" />    
-            
+            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="fill: url(#pattern-0)" />
+
             <!-- Series Columns -->
             @if (ocurrences > 0 && series > 0)
-            {               
-                var convertion = maxValue == 0 ? 0 : (_chartAreaSize.Height - (_chartAreaSize.Height / gridlines)) / maxValue;
+            {
+                decimal convertion = maxValue == 0 ? 0 : (_chartAreaSize.Height - (_chartAreaSize.Height / gridlines)) / maxValue;
 
-                @for(var i=1; ocurrences >= i; i++)
+                @for (var i = 1; ocurrences >= i; i++)
                 {
-                    var xp = (Math.Truncate(xgrid / 12m)) + 1;
-                    var x2 = (xgrid * (i - 1)) + xp;
-                    var x3 = x2 + xgrid -(xp*2);
+                    decimal xp = (Math.Truncate(xgrid / 12m)) + 1;
+                    decimal x2 = (xgrid * (i - 1)) + xp;
+                    decimal x3 = x2 + xgrid - (xp * 2);
 
-                    @for(var i2=1; i2<= series;i2++)
+                    @for (var i2 = 1; i2 <= series; i2++)
                     {
                         var serie = ChartSeries.Series.ElementAt(i2 - 1);
-                        var value = Convert.ToDecimal(GetDataValue(i - 1, i2, serie.FieldName));
+                        decimal value = Convert.ToDecimal(GetDataValue(i - 1, i2, serie.FieldName));
 
-                        var y1 = _chartAreaSize.Height - (value * convertion);
+                        decimal y1 = _chartAreaSize.Height - (value * convertion);
 
-                        var x4 = x2 + (((x3-x2) / series) * (i2-1));
-                        var x5 = x4 + ((x3-x2) / series);
+                        decimal x4 = x2 + (((x3 - x2) / series.Value) * (i2 - 1));
+                        decimal x5 = x4 + ((x3 - x2) / series.Value);
+
+                        var tx4 = Math.Round(x4, 4).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        var tx5 = Math.Round(x5, 4).ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        var ty1 = Math.Round(y1, 4).ToString(System.Globalization.CultureInfo.InvariantCulture);
 
                         @if (serie.Color != System.Drawing.Color.Empty)
                         {
-                            <path class="serie" style="fill:@System.Drawing.ColorTranslator.ToHtml(serie.Color);d:path('M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z');" d="M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z" />
+                            <path class="serie" style="fill:@System.Drawing.ColorTranslator.ToHtml(serie.Color)" d="M @x4 300 H @x5 V 300 H @x4 V 300 Z">
+                                <set attributeName="d" attributeType="XML" to="M @tx4 @ty1 H @tx5 V 300 H @tx4 V @ty1 Z" dur="0.3s" fill="freeze"></set>
+                            </path>
                         }
                         else
                         {
-                            <path class="serie serie-@i2" style="d:path('M @x4 @y1 H @x5 V 300 H @x4 V @y1 Z');" d="M @x4 300 H @x5 V 300 H @x4 V 300 Z" />
-                        }          
+                            <path class="serie serie-@i2" d="M @tx4 300 H @tx5 V 300 H @tx4 V 300 Z">
+                                <set attributeName="d" attributeType="XML" to="M @tx4 @ty1 H @tx5 V 300 H @tx4 V @ty1 Z" dur="0.3s" fill="freeze"></set>
+                            </path>
+                        }
                     }
                 }
 
             }
 
             <!-- Grid Border -->
-            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="stroke-width: 2px; stroke: rgb(64, 64, 64);fill: none" />    
-            
+            <rect x="0" y="0" width="@_chartAreaSize.Width" height="@_chartAreaSize.Height" style="stroke-width: 2px; stroke: rgb(64, 64, 64);fill: none" />
+
         </svg>
 
         @if (series > 0 && ocurrences > 0)
