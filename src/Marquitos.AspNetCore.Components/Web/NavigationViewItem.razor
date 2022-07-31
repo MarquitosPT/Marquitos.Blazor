@@ -2,7 +2,6 @@
     var disabled = !Enabled;
     var cssClass = Selected ? "mq-btn selected" : "mq-btn";
 }
-
 <button class="@cssClass" title="@Tooltip" @onclick="HandleOnClick" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" disabled="@disabled">
     @if (Icon != null)
     {
@@ -21,3 +20,11 @@
         <div class="mq-btn-content">@ChildContent</div>
     }
 </button>
+@if (_state != Enums.NavigationViewItemState.Closed)
+{
+    @if (MenuItems != null)
+    {
+        <div class="mq-btn-group" @ref="_panelElement">@MenuItems</div>
+    }
+}
+

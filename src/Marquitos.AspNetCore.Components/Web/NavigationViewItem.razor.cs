@@ -1,4 +1,5 @@
-﻿using Marquitos.AspNetCore.Components.JSInterop;
+﻿using Marquitos.AspNetCore.Components.Enums;
+using Marquitos.AspNetCore.Components.JSInterop;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
@@ -10,8 +11,14 @@ namespace Marquitos.AspNetCore.Components.Web
     {
         private bool _selected;
         private bool _enabled = true;
+        private bool _isOpen = false;
+        private NavigationViewItemState _state = NavigationViewItemState.Closed;
+        private ElementReference _panelElement;
 
         private MarkupString IconContent { get; set; }
+
+        [Inject]
+        private IJSAnimation JSAnimation { get; set; }
 
         [Inject]
         private IJSFile JSFile { get; set; }
@@ -33,6 +40,9 @@ namespace Marquitos.AspNetCore.Components.Web
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
+
+        [Parameter]
+        public RenderFragment MenuItems { get; set; }
 
         [Parameter]
         public string Tooltip { get; set; }
@@ -72,6 +82,55 @@ namespace Marquitos.AspNetCore.Components.Web
             }
         }
 
+        /// <summary>
+        /// Gets or sets if the item is open or closed
+        /// </summary>
+        [Parameter]
+        public bool IsOpen
+        {
+            get
+            {
+                return _isOpen;
+            }
+
+            set
+            {
+
+                if (_isOpen != value)
+                {
+                    _isOpen = value;
+
+                    if (_isOpen)
+                    {
+                        _state = NavigationViewItemState.Open;
+                    }
+                    else
+                    {
+                        _state = NavigationViewItemState.Closed;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Toggles the item state between open and closed
+        /// </summary>
+        public void Toggle()
+        {
+            if (IsOpen)
+            {
+                _state = NavigationViewItemState.Closing;
+
+                StateHasChanged();
+            }
+            else
+            {
+                _state = NavigationViewItemState.Openning;
+
+                StateHasChanged();
+            }
+
+        }
         protected override void OnInitialized()
         {
             if (NavigationView != null)
@@ -93,21 +152,54 @@ namespace Marquitos.AspNetCore.Components.Web
             if (firstRender)
             {
                 IconContent = await JSFile.LoadMarkupStringAsync(IconSource);
+                await JSAnimation.InitializeAsync();
+            }
+            else
+            {
+                if (_state == NavigationViewItemState.Openning)
+                {
+                    IsOpen = true;
+
+                    //Container.Activate(this);
+                    await JSAnimation.PlayAsync(AnimationType.Expand, _panelElement, async () =>
+                    {
+                        StateHasChanged();
+
+                        await Task.CompletedTask;
+                    });
+                }
+                else if (_state == NavigationViewItemState.Closing)
+                {
+                    await JSAnimation.PlayAsync(AnimationType.Collapse, _panelElement, async () =>
+                    {
+                        IsOpen = false;
+                        StateHasChanged();
+
+                        await Task.CompletedTask;
+                    });
+                }
             }
         }
 
         private void HandleOnClick(MouseEventArgs args)
         {
-            if (OnClick.HasDelegate)
+            if (MenuItems != null)
             {
-                OnClick.InvokeAsync(args);
+                Toggle();
             }
             else
             {
-                if (NavigationView != null && NavigationView.ActiveMenu != this)
+                if (OnClick.HasDelegate)
                 {
-                    NavigationView.Activate(this);
-                    NavigationView.NavigateTo(Uri);
+                    OnClick.InvokeAsync(args);
+                }
+                else
+                {
+                    if (NavigationView != null && NavigationView.ActiveMenu != this)
+                    {
+                        NavigationView.Activate(this);
+                        NavigationView.NavigateTo(Uri);
+                    }
                 }
             }
         }
