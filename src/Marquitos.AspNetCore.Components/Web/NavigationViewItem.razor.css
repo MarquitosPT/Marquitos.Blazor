@@ -84,5 +84,6 @@
     -ms-flex-direction: column;
     -webkit-flex-direction: column;
     flex-direction: column;
-    background-color: #222;
+    background-color: #303030;
+    overflow: hidden;
 }
