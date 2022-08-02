@@ -1,8 +1,36 @@
-﻿@{ 
+﻿@{
     var disabled = !Enabled;
-    var cssClass = Selected ? "mq-btn selected" : "mq-btn";
+    var cssButtonClass = Selected ? "mq-btn selected" : "mq-btn";
+    var cssButtonContentClass = "mq-btn-content";
+
+    if (MenuItems != null)
+    {
+        cssButtonClass += " menu";
+
+        switch (_state)
+        {
+            case Enums.NavigationViewItemState.Openning:
+           
+                break;
+
+            case Enums.NavigationViewItemState.Open:
+                break;
+
+            case Enums.NavigationViewItemState.Closing:
+                cssButtonClass += " collapsed";
+                break;
+
+            case Enums.NavigationViewItemState.Closed:
+                cssButtonClass += " collapsed";
+                break;
+
+            default:
+                break;
+        }
+    }
+    
 }
-<button class="@cssClass" title="@Tooltip" @onclick="HandleOnClick" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" disabled="@disabled">
+<button class="@cssButtonClass" title="@Tooltip" @onclick="HandleOnClick" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" disabled="@disabled">
     @if (Icon != null)
     {
         <div class="mq-btn-icon">@Icon</div>
@@ -13,11 +41,11 @@
     }
     @if (Content != null)
     {
-        <div class="mq-btn-content">@Content</div>
+        <div class="@cssButtonContentClass">@Content</div>
     }
     else if (ChildContent != null)
     {
-        <div class="mq-btn-content">@ChildContent</div>
+        <div class="@cssButtonContentClass">@ChildContent</div>
     }
 </button>
 @if (_state != Enums.NavigationViewItemState.Closed)
