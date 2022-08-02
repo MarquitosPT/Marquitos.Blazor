@@ -105,4 +105,5 @@
     -webkit-flex-direction: column;
     flex-direction: column;
     background-color: #222;
+    overflow: hidden;
 }
