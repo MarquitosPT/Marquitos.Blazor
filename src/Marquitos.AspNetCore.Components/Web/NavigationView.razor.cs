@@ -231,7 +231,9 @@ namespace Marquitos.AspNetCore.Components.Web
             _playNavigationAnimation = true;
 
             var relativeUrl = NavigationManager.ToBaseRelativePath(e.Location);
-            var item = _list.FirstOrDefault(e => e.Uri == relativeUrl || (e.Uri != "" && relativeUrl.StartsWith(e.Uri)));
+            relativeUrl = relativeUrl.Split('?')[0]; 
+            
+            var item = _list.FirstOrDefault(e => e.Uri == relativeUrl);
 
             if (ActiveMenu != item)
             {
