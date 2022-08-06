@@ -1,15 +1,11 @@
 ﻿@inherits Component
 @{
     var content = IsOn ? OnContent : OffContent;
-    var cssClass = IsOn ? "toggle on" : "toggle";
+    var disabled = !Enabled;
 }
-<div>
-    <div>@Header</div>
-    <div><input class="@cssClass" type="checkbox" role="switch" @onchange="(e) => { IsOn = (bool)e.Value; }"><div>@content</div></div>
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">@content</label>
-    </div>
+<div class="form-check form-switch" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true">
+    <input class="form-check-input" type="checkbox" role="switch" @onchange="CheckChange" checked="@IsOn" disabled="@disabled">
+    <label class="form-check-label" @onclick="LabelClick" disabled="@disabled">@content</label>
 </div>
 
 
