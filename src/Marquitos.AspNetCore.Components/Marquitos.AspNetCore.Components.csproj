@@ -34,9 +34,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.5</Version>
-		<AssemblyVersion>1.0.5</AssemblyVersion>
-		<FileVersion>1.0.5.9</FileVersion>
+		<Version>1.0.6</Version>
+		<AssemblyVersion>1.0.6</AssemblyVersion>
+		<FileVersion>1.0.6.10</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
