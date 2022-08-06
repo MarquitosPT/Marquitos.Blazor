@@ -16,6 +16,7 @@ Marquitos Blazor Components library is composed by the following components.
 - [NavigationView](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/NavigationView)
 - SvgIcon
 - TabSet
+- ToggleSwitch
 
 ## Usage
 Add the latest `Marquitos.AspNetCore.Components` nuget package to your project references:
