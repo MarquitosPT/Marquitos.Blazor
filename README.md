@@ -6,17 +6,17 @@ Marquitos Blazor Components is an open source library designed for WebAssembly. 
 Marquitos Blazor Components library is composed by the following components.
 
 ## Components
-- Accordion
-- Breadcrumb
-- Button
-- Card
-- Chart
-- Dialog
-- Grid
+- [Accordion](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Accordion)
+- [Breadcrumb](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Breadcrumb)
+- [Button](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Button)
+- [Card](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Card)
+- [Chart](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Chart)
+- [Dialog](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Dialog)
+- [Grid](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/Grid)
 - [NavigationView](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/NavigationView)
-- SvgIcon
-- TabSet
-- ToggleSwitch
+- [SvgIcon](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/SvgIcon)
+- [TabSet](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/TabSet)
+- [ToggleSwitch](https://github.com/MarquitosPT/Marquitos.Blazor/wiki/ToggleSwitch)
 
 ## Usage
 Add the latest `Marquitos.AspNetCore.Components` nuget package to your project references:
