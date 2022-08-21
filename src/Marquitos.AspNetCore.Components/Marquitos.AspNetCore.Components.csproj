@@ -2,8 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<Product>Blazor Components</Product>
-		<Description>ASP.NET Core Blazor Components</Description>
+		<Product>Marquitos Blazor Components</Product>
+		<Description>Marquitos Blazor Components is an open source library designed for WebAssembly. 
+The main goal of this library is to create simple and usefull components. 
+Some of them are based just on Bootstrap 5 CSS but enriched with animation motions to make a nice fluid user experience.</Description>
 		<Company>MarquitosPT</Company>
 	</PropertyGroup>
 
@@ -28,15 +30,18 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/MarquitosPT/Marquitos.Blazor</RepositoryUrl>
 		<Authors>Marcos Gomes</Authors>
-		<Copyright>Copyright © 2021 - MarquitosPT</Copyright>
+		<Copyright>Copyright © 2021-2022 by MarquitosPT</Copyright>
 		<Owners>MarquitosPT</Owners>
-		<Title>Blazor Components</Title>
+		<Title>Marquitos Blazor Components</Title>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.6</Version>
-		<AssemblyVersion>1.0.6</AssemblyVersion>
-		<FileVersion>1.0.6.10</FileVersion>
+		<Version>1.0.7</Version>
+		<AssemblyVersion>1.0.7</AssemblyVersion>
+		<FileVersion>1.0.7.11</FileVersion>
+		<IncludeSymbols>True</IncludeSymbols>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -45,6 +50,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	  <None Include="bundleconfig.json" />
 	  <None Include="tsconfig.json" />
 	</ItemGroup>
