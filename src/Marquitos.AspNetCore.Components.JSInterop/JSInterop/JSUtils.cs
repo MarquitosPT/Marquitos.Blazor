@@ -1,7 +1,5 @@
 ﻿using Marquitos.AspNetCore.Components.Events;
-using Marquitos.AspNetCore.Components.JSInterop.Extensions.Configuration.Options;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using System;
 using System.Drawing;
@@ -11,17 +9,12 @@ namespace Marquitos.AspNetCore.Components.JSInterop
 {
     public class JSUtils : IJSUtils, IAsyncDisposable
     {
-        private readonly JSInteropOptions _options;
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-        public JSUtils(IOptions<JSInteropOptions> options, IJSRuntime jsRuntime)
+        public JSUtils(IJSRuntime jsRuntime)
         {
-            _options = options.Value;
-
-            var baseStr = _options.Framework == Enums.FrameworkType.WebAssembly ? "./" : "";
-
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", baseStr + "_content/Marquitos.AspNetCore.Components.JSInterop/js/utils.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/utils.min.js").AsTask());
         }
 
         private async Task HandleWindowResizeAsync(ResizeArgs e)

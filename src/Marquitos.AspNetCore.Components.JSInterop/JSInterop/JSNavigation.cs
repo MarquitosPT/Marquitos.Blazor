@@ -1,6 +1,4 @@
-﻿using Marquitos.AspNetCore.Components.JSInterop.Extensions.Configuration.Options;
-using Microsoft.Extensions.Options;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using System;
 using System.Threading.Tasks;
 
@@ -8,17 +6,12 @@ namespace Marquitos.AspNetCore.Components.JSInterop
 {
     public class JSNavigation : IJSNavigation, IAsyncDisposable
     {
-        private readonly JSInteropOptions _options;
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-        public JSNavigation(IOptions<JSInteropOptions> options, IJSRuntime jsRuntime)
+        public JSNavigation(IJSRuntime jsRuntime)
         {
-            _options = options.Value;
-
-            var baseStr = _options.Framework == Enums.FrameworkType.WebAssembly ? "./" : "";
-
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", baseStr + "_content/Marquitos.AspNetCore.Components.JSInterop/js/navigation.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/navigation.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()

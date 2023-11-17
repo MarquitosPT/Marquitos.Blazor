@@ -1,7 +1,5 @@
 ﻿using Marquitos.AspNetCore.Components.Enums;
-using Marquitos.AspNetCore.Components.JSInterop.Extensions.Configuration.Options;
 using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using System;
 using System.Threading.Tasks;
@@ -10,17 +8,12 @@ namespace Marquitos.AspNetCore.Components.JSInterop
 {
     public class JSAnimation : IJSAnimation, IAsyncDisposable
     {
-        private readonly JSInteropOptions _options;
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-        public JSAnimation(IOptions<JSInteropOptions> options, IJSRuntime jsRuntime)
+        public JSAnimation(IJSRuntime jsRuntime)
         {
-            _options = options.Value;
-
-            var baseStr = _options.Framework == Enums.FrameworkType.WebAssembly ? "./" : "";
-
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", baseStr + "_content/Marquitos.AspNetCore.Components.JSInterop/js/animation.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/animation.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()

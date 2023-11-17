@@ -24,7 +24,7 @@ namespace Marquitos.AspNetCore.Components.Extensions.Configuration
             services.AddScoped<IConfigurationService, ConfigurationService>();
 
             // JSInterop Services
-            services.AddMarquitosJSInteropWebAssembly();
+            services.AddMarquitosJSInterop();
 
             return services;
         }
