@@ -13,7 +13,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         public JSAnimation(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Marquitos.AspNetCore.Components/js/animation.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/animation.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()

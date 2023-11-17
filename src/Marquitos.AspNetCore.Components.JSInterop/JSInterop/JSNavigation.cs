@@ -11,7 +11,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         public JSNavigation(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Marquitos.AspNetCore.Components/js/navigation.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/navigation.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()

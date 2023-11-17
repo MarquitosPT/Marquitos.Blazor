@@ -12,7 +12,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         public JSFile(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Marquitos.AspNetCore.Components/js/file.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/file.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()

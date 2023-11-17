@@ -14,7 +14,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         public JSUtils(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Marquitos.AspNetCore.Components/js/utils.min.js").AsTask());
+               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/utils.min.js").AsTask());
         }
 
         private async Task HandleWindowResizeAsync(ResizeArgs e)

@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BE839E85
 		tools\MarquitosPT.snk = tools\MarquitosPT.snk
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marquitos.AspNetCore.Components.JSInterop", "src\Marquitos.AspNetCore.Components.JSInterop\Marquitos.AspNetCore.Components.JSInterop.csproj", "{7471A1DE-BBB3-4F06-9B7F-C657D6150033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF5FF04-784A-4455-BF51-9A097FF54E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7471A1DE-BBB3-4F06-9B7F-C657D6150033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7471A1DE-BBB3-4F06-9B7F-C657D6150033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7471A1DE-BBB3-4F06-9B7F-C657D6150033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7471A1DE-BBB3-4F06-9B7F-C657D6150033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{4BCC7D1D-2DA7-4BD5-964D-6FCD630B439B} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
 		{452F5224-C7F2-46EA-B552-554A4E32B0D9} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
 		{0AF5FF04-784A-4455-BF51-9A097FF54E88} = {9107A75A-AD1B-437A-9F76-3C389C88BA8D}
+		{7471A1DE-BBB3-4F06-9B7F-C657D6150033} = {03B5F934-AD1E-486E-8CC2-2981A4D7C75B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B8E4BDD-6C98-4617-B356-3D937E14AAB4}

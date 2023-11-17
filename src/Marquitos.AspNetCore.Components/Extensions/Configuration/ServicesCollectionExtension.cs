@@ -1,5 +1,4 @@
 ﻿using Marquitos.AspNetCore.Components.Extensions.Configuration.Options;
-using Marquitos.AspNetCore.Components.JSInterop;
 using Marquitos.AspNetCore.Components.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -25,10 +24,7 @@ namespace Marquitos.AspNetCore.Components.Extensions.Configuration
             services.AddScoped<IConfigurationService, ConfigurationService>();
 
             // JSInterop Services
-            services.AddScoped<IJSAnimation, JSAnimation>();
-            services.AddScoped<IJSFile, JSFile>();
-            services.AddScoped<IJSNavigation, JSNavigation>();
-            services.AddScoped<IJSUtils, JSUtils>();
+            services.AddMarquitosJSInterop();
 
             return services;
         }
