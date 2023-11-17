@@ -61,6 +61,24 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             }
         }
 
+        public async ValueTask DownloadFileFromStreamAsync(string fileName, DotNetStreamReference dotNetStreamReference)
+        {
+            if (string.IsNullOrWhiteSpace(fileName) || dotNetStreamReference == null)
+            {
+                return;
+            }
+
+            try
+            {
+                var module = await moduleTask.Value;            
+                await module.InvokeAsync<string>("File.downloadFileFromStream", fileName, dotNetStreamReference);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
         public async ValueTask DisposeAsync()
         {
             if (moduleTask.IsValueCreated)
@@ -69,6 +87,5 @@ namespace Marquitos.AspNetCore.Components.JSInterop
                 await module.DisposeAsync();
             }
         }
-
     }
 }
