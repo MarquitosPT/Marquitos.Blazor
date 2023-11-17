@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Marquitos.AspNetCore.Components.JSInterop.Extensions.Configuration.Options;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using System;
 using System.Threading.Tasks;
@@ -7,12 +9,17 @@ namespace Marquitos.AspNetCore.Components.JSInterop
 {
     public class JSFile : IJSFile, IAsyncDisposable
     {
+        private readonly JSInteropOptions _options;
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-        public JSFile(IJSRuntime jsRuntime)
+        public JSFile(IOptions<JSInteropOptions> options, IJSRuntime jsRuntime)
         {
+            _options = options.Value;
+
+            var baseStr = _options.Framework == Enums.FrameworkType.WebAssembly ? "./" : "";
+
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Marquitos.AspNetCore.Components.JSInterop/js/file.min.js").AsTask());
+               "import", baseStr + "_content/Marquitos.AspNetCore.Components.JSInterop/js/file.min.js").AsTask());
         }
 
         public async ValueTask InitializeAsync()
