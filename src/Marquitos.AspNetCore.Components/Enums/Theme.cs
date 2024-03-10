@@ -3,6 +3,7 @@
     public enum Theme
     {
         Default,
+        Bootstrap4,
         Bootstrap
     }
 }

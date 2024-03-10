@@ -28,7 +28,14 @@
             <div class="modal-content shadow" @ref="_windowElement">
                 <div class="modal-header">
                     <h5 class="modal-title">@DialogHeader</h5>
-                    <button type="button" class="btn-close" aria-label="Close" @onclick="HideAsync"></button>
+                    @if (Theme == Theme.Bootstrap4)
+                    {
+                        <button type="button" class="close" aria-label="Close" @onclick="HideAsync"><span aria-hidden="true">&times;</span></button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn-close" aria-label="Close" @onclick="HideAsync"></button>
+                    }
                 </div>
                 <div class="modal-body">@DialogBody</div>
                 @if (@DialogFooter != null)
