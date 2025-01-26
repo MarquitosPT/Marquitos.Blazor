@@ -324,4 +324,13 @@
             easing: 'ease'
         });
     }
+
+    export let clickAnimation = function (element: HTMLElement, obj, duration: number = 300): void {
+        var keyFrames: Keyframe[] = [
+            { transform: 'scale(1)' },
+            { transform: 'scale(0.9)' },
+            { transform: 'scale(1)' }
+        ];
+        play(keyFrames, element, obj, duration);
+    }
 }

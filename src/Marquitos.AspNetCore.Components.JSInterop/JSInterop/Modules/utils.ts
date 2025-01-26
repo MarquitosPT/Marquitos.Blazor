@@ -84,4 +84,24 @@
 
         element.style.setProperty(name, value);
     }
+
+    export let addClassIfNotExists = function (element: HTMLElement, className: string): void {
+        if (!element.classList.contains(className)) {
+            element.classList.add(className);
+        }
+    }
+
+    export let removeClassIfExists = function (element: HTMLElement, className: string): void {
+        if (element.classList.contains(className)) {
+            element.classList.remove(className);
+        }
+    }
+
+    export let toggleClass = function (element: HTMLElement, className: string): void {
+        element.classList.toggle(className);
+    }
+
+    export let hasClass = function (element: HTMLElement, className: string): boolean {
+        return element.classList.contains(className);
+    }
 }

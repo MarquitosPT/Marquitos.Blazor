@@ -24,6 +24,38 @@ namespace Marquitos.AspNetCore.Components.JSInterop
 
         ValueTask SetPropertyAsync(ElementReference element, string name, string value);
 
+        /// <summary>
+        /// Add the class name to element class list
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        ValueTask AddClassAsync(ElementReference element, string name);
+
+        /// <summary>
+        /// Remove the class name from the element class list
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        ValueTask RemoveClassAsync(ElementReference element, string name);
+
+        /// <summary>
+        /// Add or Remove the clas name from the element class list
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        ValueTask ToggleClassAsync(ElementReference element, string name);
+
+        /// <summary>
+        /// Checks if the class name exists in element calss list
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        ValueTask<bool> HasClassAsync(ElementReference element, string name);
+
         EventHandler<ResizeArgs> OnWindowResize { get; set; }
     }
 }

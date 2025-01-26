@@ -34,5 +34,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         
         ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, Func<Task> callback = null);
         ValueTask CompactAndCollapseAsync(ElementReference element, int toWidth, int toHeight, int duration, Func<Task> callback = null);
+
+        ValueTask ClickAnimationAsync(ElementReference element, int duration, Func<Task> callback = null);
     }
 }

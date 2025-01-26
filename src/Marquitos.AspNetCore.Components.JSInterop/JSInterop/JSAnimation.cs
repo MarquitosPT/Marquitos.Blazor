@@ -145,6 +145,12 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             await module.InvokeVoidAsync("Animation.compactAndCollapse", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), toWidth, toHeight, duration);
         }
 
+        public async ValueTask ClickAnimationAsync(ElementReference element, int duration, Func<Task> callback = null)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Animation.clickAnimation", element, DotNetObjectReference.Create(new JSCallbackAction(callback)), duration);
+        }
+
         public async ValueTask DisposeAsync()
         {
             if (moduleTask.IsValueCreated)

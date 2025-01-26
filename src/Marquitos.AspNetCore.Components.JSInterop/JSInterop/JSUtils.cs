@@ -117,5 +117,29 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("Utils.setProperty", element, name, value);
         }
+
+        public async ValueTask AddClassAsync(ElementReference element, string name)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.addClassIfNotExists", element, name);
+        }
+
+        public async ValueTask RemoveClassAsync(ElementReference element, string name)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.removeClassIfExists", element, name);
+        }
+
+        public async ValueTask ToggleClassAsync(ElementReference element, string name)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.toggleClass", element, name);
+        }
+
+        public async ValueTask<bool> HasClassAsync(ElementReference element, string name)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<bool>("Utils.hasClass", element, name);
+        }
     }
 }

@@ -57,4 +57,20 @@ export var Utils;
     Utils.setProperty = function (element, name, value) {
         element.style.setProperty(name, value);
     };
+    Utils.addClassIfNotExists = function (element, className) {
+        if (!element.classList.contains(className)) {
+            element.classList.add(className);
+        }
+    };
+    Utils.removeClassIfExists = function (element, className) {
+        if (element.classList.contains(className)) {
+            element.classList.remove(className);
+        }
+    };
+    Utils.toggleClass = function (element, className) {
+        element.classList.toggle(className);
+    };
+    Utils.hasClass = function (element, className) {
+        return element.classList.contains(className);
+    };
 })(Utils || (Utils = {}));

@@ -288,4 +288,12 @@ export var Animation;
             easing: 'ease'
         });
     };
+    Animation.clickAnimation = function (element, obj, duration = 300) {
+        var keyFrames = [
+            { transform: 'scale(1)' },
+            { transform: 'scale(0.9)' },
+            { transform: 'scale(1)' }
+        ];
+        play(keyFrames, element, obj, duration);
+    };
 })(Animation || (Animation = {}));
