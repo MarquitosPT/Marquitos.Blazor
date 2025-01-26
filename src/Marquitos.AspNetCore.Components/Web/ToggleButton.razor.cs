@@ -12,7 +12,7 @@ namespace Marquitos.AspNetCore.Components.Web
     public partial class ToggleButton : ComponentBase, IToggleButton
     {
         private ElementReference _element;
-        private bool _isChecked = false;
+        private bool _internalChecked = false;
 
         [Inject]
         private IJSAnimation JSAnimation { get; set; }
@@ -45,20 +45,7 @@ namespace Marquitos.AspNetCore.Components.Web
         /// Indicates if the button is checked
         /// </summary>
         [Parameter]
-        public bool IsChecked
-        {
-            get
-            {
-                return _isChecked;
-            }
-            set
-            {
-                if (_isChecked != value)
-                {
-                    _isChecked = value;
-                }
-            }
-        }
+        public bool IsChecked { get; set; } = false;
 
         /// <summary>
         /// Indicates if the button is enabled
@@ -77,9 +64,16 @@ namespace Marquitos.AspNetCore.Components.Web
         /// </summary>
         public void Toggle()
         {
-            IsChecked = !IsChecked;
+            if (!Enabled)
+            {
+                return;
+            }
 
-            if (Container != null && _isChecked)
+            _internalChecked = !_internalChecked;
+
+            IsChecked = _internalChecked;
+
+            if (Container != null && _internalChecked)
             {
                 Container.Activate(this);
             }
@@ -103,6 +97,8 @@ namespace Marquitos.AspNetCore.Components.Web
             {
                 Container.AddItem(this);
             }
+
+            _internalChecked = IsChecked;
         }
 
         override protected async Task OnAfterRenderAsync(bool firstRender)
@@ -113,7 +109,7 @@ namespace Marquitos.AspNetCore.Components.Web
                 await JSUtils.InitializeAsync();
             }
 
-            if (IsChecked)
+            if (_internalChecked)
             {
                 await JSUtils.AddClassAsync(_element, "active");
             }
@@ -130,14 +126,14 @@ namespace Marquitos.AspNetCore.Components.Web
                 return;
             }
 
-            if (Container != null && !Container.AllowMultipleButtonsChecked && _isChecked)
+            if (Container != null && !Container.AllowMultipleButtonsChecked && _internalChecked)
             {
                 return;
             }
 
-            Toggle();
-
             await JSAnimation.ClickAnimationAsync(_element, 200);
+
+            Toggle();
 
             if (OnClick.HasDelegate)
             {

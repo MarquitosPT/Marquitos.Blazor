@@ -1,4 +1,5 @@
 ﻿@{
     var disabled = !Enabled;
+    var ariaPressed = _internalChecked ? "true" : "false";
 }
-<button @ref="_element" type="button" class="btn btn-outline-primary" @attributes="AdditionalAttributes" @onclick="HandleClick" title="@Title" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" aria-pressed="@_isChecked" autocomplete="off" disabled="@disabled">@ChildContent</button>
+<button @ref="_element" type="button" class="btn btn-outline-primary" @attributes="AdditionalAttributes" @onclick="HandleClick" title="@Title" @oncontextmenu="(e) => { }" @oncontextmenu:preventDefault="true" @oncontextmenu:stopPropagation="true" aria-pressed="@ariaPressed" autocomplete="off" disabled="@disabled">@ChildContent</button>

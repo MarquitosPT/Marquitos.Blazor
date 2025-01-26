@@ -2,9 +2,9 @@
 <p>
     <div class="bd-example">
         <ToggleButtonGroup>
-            <ToggleButton IsChecked="true">Button 1</ToggleButton>
-            <ToggleButton>Button 2</ToggleButton>
-            <ToggleButton>Button 3</ToggleButton>
+            <ToggleButton IsChecked="true" OnClick='() => Console.WriteLine("Button1")'>Button 1</ToggleButton>
+            <ToggleButton OnClick='() => Console.WriteLine("Button2")'>Button 2</ToggleButton>
+            <ToggleButton OnClick='() => Console.WriteLine("Button3")'>Button 3</ToggleButton>
         </ToggleButtonGroup>
     </div>
     <div class="bd-code">
