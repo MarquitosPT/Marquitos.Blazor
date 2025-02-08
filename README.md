@@ -1,4 +1,4 @@
-[![NuGet Badge](https://buildstats.info/nuget/Marquitos.AspNetCore.Components)](https://www.nuget.org/packages/Marquitos.AspNetCore.Components/)
+[![NuGet Version](https://img.shields.io/nuget/v/Marquitos.AspNetCore.Components)](https://www.nuget.org/packages/Marquitos.AspNetCore.Components/)
 
 # Marquitos.Blazor
 Marquitos Blazor Components is an open source library designed for WebAssembly. The main goal of this library is to create simple and usefull components. Some of them are based just on Bootstrap 5 CSS but enriched with animation motions to make a nice fluid user experience.
