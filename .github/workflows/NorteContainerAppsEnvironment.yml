@@ -3,7 +3,7 @@ on:
     branches:
     - master
 env:
-  DOTNET_CORE_VERSION: 7.0.x
+  DOTNET_CORE_VERSION: 6.0.x
   CONTAINER_APP_ENVIRONMENT_NAME: NorteContainerAppsEnvironment
   RESOURCE_GROUP: Norte
   CONTAINER_REGISTRY_NAME: nortecontainerregistry
