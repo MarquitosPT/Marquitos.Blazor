@@ -147,5 +147,11 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             var module = await moduleTask.Value;
             return await module.InvokeAsync<bool>("Utils.hasFocus", element);
         }
+
+        public async ValueTask RegisterKeyDownWithEnterPreventDefaultAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("Utils.registerKeyDownWithEnterPreventDefault", element);
+        }
     }
 }

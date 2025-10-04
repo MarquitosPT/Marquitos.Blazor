@@ -76,4 +76,13 @@ export var Utils;
     Utils.hasFocus = function (element) {
         return element && element.contains(document.activeElement);
     };
+    Utils.registerKeyDownWithEnterPreventDefault = function (element) {
+        if (element) {
+            element.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                }
+            });
+        }
+    };
 })(Utils || (Utils = {}));

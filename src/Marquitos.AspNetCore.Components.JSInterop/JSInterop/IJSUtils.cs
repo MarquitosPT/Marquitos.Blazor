@@ -64,5 +64,7 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         ValueTask<bool> HasFocusAsync(ElementReference element);
 
         EventHandler<ResizeArgs> OnWindowResize { get; set; }
+
+        ValueTask RegisterKeyDownWithEnterPreventDefaultAsync(ElementReference element);
     }
 }

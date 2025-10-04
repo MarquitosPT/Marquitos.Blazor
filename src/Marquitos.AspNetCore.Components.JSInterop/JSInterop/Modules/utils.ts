@@ -109,4 +109,13 @@
         return element && element.contains(document.activeElement);
     }
 
+    export let registerKeyDownWithEnterPreventDefault = function (element: HTMLElement): void {
+        if (element) {
+            element.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                }
+            });
+        }
+    }
 }

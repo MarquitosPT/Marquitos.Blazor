@@ -41,4 +41,25 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             }
         }
     }
+
+    public class JSCallbackAction<T,TResult>
+    {
+        private readonly Func<T, Task<TResult>> _callback;
+
+        public JSCallbackAction(Func<T, Task<TResult>> callback)
+        {
+            _callback = callback;
+        }
+
+        [JSInvokable]
+        public async ValueTask<TResult> CallbackAsync(T arg)
+        {
+            if (_callback != null)
+            {
+                return await _callback.Invoke(arg);
+            }
+
+            return default;
+        }
+    }
 }
