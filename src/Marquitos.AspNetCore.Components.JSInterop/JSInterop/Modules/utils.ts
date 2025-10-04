@@ -104,4 +104,9 @@
     export let hasClass = function (element: HTMLElement, className: string): boolean {
         return element.classList.contains(className);
     }
+
+    export let hasFocus = function (element: HTMLElement): boolean {
+        return element && element.contains(document.activeElement);
+    }
+
 }

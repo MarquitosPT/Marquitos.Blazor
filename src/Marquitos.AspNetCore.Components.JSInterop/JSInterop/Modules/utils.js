@@ -73,4 +73,7 @@ export var Utils;
     Utils.hasClass = function (element, className) {
         return element.classList.contains(className);
     };
+    Utils.hasFocus = function (element) {
+        return element && element.contains(document.activeElement);
+    };
 })(Utils || (Utils = {}));
