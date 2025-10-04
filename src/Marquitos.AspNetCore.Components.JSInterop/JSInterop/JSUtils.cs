@@ -141,5 +141,11 @@ namespace Marquitos.AspNetCore.Components.JSInterop
             var module = await moduleTask.Value;
             return await module.InvokeAsync<bool>("Utils.hasClass", element, name);
         }
+
+        public async ValueTask<bool> HasFocusAsync(ElementReference element)
+        {
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<bool>("Utils.hasFocus", element);
+        }
     }
 }

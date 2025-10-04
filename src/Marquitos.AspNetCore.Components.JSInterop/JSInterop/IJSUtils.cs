@@ -56,6 +56,13 @@ namespace Marquitos.AspNetCore.Components.JSInterop
         /// <returns></returns>
         ValueTask<bool> HasClassAsync(ElementReference element, string name);
 
+        /// <summary>
+        /// Checks if the element has focus
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        ValueTask<bool> HasFocusAsync(ElementReference element);
+
         EventHandler<ResizeArgs> OnWindowResize { get; set; }
     }
 }
