@@ -43,12 +43,14 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
     - name: Azure Login
       uses: azure/login@v2
       with:
-        client-id: ${{ vars.marquitos_blazor_CLIENT_ID_F673 }}
-        tenant-id: ${{ vars.marquitos_blazor_TENANT_ID_524E }}
-        subscription-id: ${{ vars.marquitos_blazor_SUBSCRIPTION_ID_524E }}
+        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8172A1C2F4E5433EA2B14759998BBB75 }}
+        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A38D1584DE2F47038BD869C47ABEDA5D }}
+        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F36FEB5D81C145D79298C0B61E84F3A3 }}
+    
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
