@@ -14,18 +14,6 @@ namespace Marquitos.AspNetCore.Components.Web
             Series = new List<ChartSerie>();
         }
 
-        public ChartSeries(IChart chart)
-        {
-            Chart = chart;
-            Series = new List<ChartSerie>();
-        }
-
-        public ChartSeries(IChart chart, IEnumerable<ChartSerie> series)
-        {
-            Chart = chart;
-            Series = new List<ChartSerie>(series);
-        }
-
         [CascadingParameter]
         private IChart Chart { get; set; }
 

@@ -11,11 +11,6 @@ namespace Marquitos.AspNetCore.Components.Web
             Definitions = new List<RowDefinition>();
         }
 
-        public RowDefinitions(IEnumerable<RowDefinition> definitions)
-        {
-            Definitions = new List<RowDefinition>(definitions);
-        }
-
         [CascadingParameter]
         private IGrid Grid { get; set; }
 
