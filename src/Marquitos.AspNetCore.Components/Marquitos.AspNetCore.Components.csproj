@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net8.0;net10.0</TargetFrameworks>
 		<Product>Marquitos Blazor Components</Product>
 		<Description>Marquitos Blazor Components is an open source library designed for WebAssembly. 
 The main goal of this library is to create simple and usefull components. 
@@ -30,7 +30,7 @@ Some of them are based just on Bootstrap 5 CSS but enriched with animation motio
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/MarquitosPT/Marquitos.Blazor</RepositoryUrl>
 		<Authors>Marcos Gomes</Authors>
-		<Copyright>Copyright © 2021-2022 by MarquitosPT</Copyright>
+		<Copyright>Copyright © 2021-2026 by MarquitosPT</Copyright>
 		<Owners>MarquitosPT</Owners>
 		<Title>Marquitos Blazor Components</Title>
 	</PropertyGroup>
@@ -50,10 +50,6 @@ Some of them are based just on Bootstrap 5 CSS but enriched with animation motio
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
